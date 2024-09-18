@@ -22,9 +22,23 @@ const size = {
     xxxl: "256px",
 };
 
+const color = {
+    primary: "#4CF499",
+    bg: "#FAFCFA",
+    black500: "#A4A4A4",
+    green500: "#10D66B",
+    green600: "#0AD117",
+};
+
+const style = {
+    shadow: "0px 4px 4px 0px #00000080",
+}
+
 const theme = {
     fontSize,
     size,
+    color,
+    style,
 };
 
 export default theme;
