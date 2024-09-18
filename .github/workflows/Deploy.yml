@@ -1,0 +1,31 @@
+name: Deploy
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout Repository
+      uses: actions/checkout@v3
+
+    - name: Install sshpass
+      run: sudo apt-get install -y sshpass
+
+    - name: Copy Files to Remote Server
+      run: |
+        sshpass -p "${{ secrets.SSH_PASSWORD }}" scp -o StrictHostKeyChecking=no -r ./* ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}:${{ secrets.WORK_PATH }}
+
+    - name: Build and Deploy Docker Image on Remote Server
+      run: |
+        sshpass -p "${{ secrets.SSH_PASSWORD }}" ssh -o StrictHostKeyChecking=no ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} << 'EOF'
+          cd ${{ secrets.WORK_PATH }}
+          docker build -t ${{ secrets.IMAGE }} .
+          docker stop ${{ secrets.CONTAINER }} || true
+          docker rm ${{ secrets.CONTAINER }} || true
+          docker run -d --name ${{ secrets.CONTAINER }} -p ${{ secrets.DOCKER_EX_PORT }}:${{ secrets.DOCKER_IN_PORT }} ${{ secrets.IMAGE }}
+        EOF
