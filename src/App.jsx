@@ -3,6 +3,7 @@ import GlobalStyle from './styles/GlobalStyle'
 import { ThemeProvider } from 'styled-components'
 import theme from './styles/theme'
 import Main from './pages/Main'
+import Layout from './layout/Layout'
 
 function App() {
 
@@ -10,7 +11,9 @@ function App() {
     <>
       <GlobalStyle />
       <ThemeProvider theme={theme}>
-        <Main />
+          <Layout>
+            <Main />
+          </Layout>
       </ThemeProvider>
     </>
   )
