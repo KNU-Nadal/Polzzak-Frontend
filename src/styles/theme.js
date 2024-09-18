@@ -25,7 +25,9 @@ const size = {
 const color = {
     primary: "#4CF499",
     bg: "#FAFCFA",
-    black500: "#A4A4A4"
+    black500: "#A4A4A4",
+    green500: "#10D66B",
+    green600: "#0AD117",
 };
 
 const style = {
