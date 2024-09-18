@@ -8,7 +8,7 @@ import DDay from "./DDay";
 const EventCardWrapper = styled.div`
     display: flex;
     flex-direction: column;
-    width: 50%;
+    width: calc(50% - ${({theme}) => theme.size.xs});
     border-radius: ${({theme}) => theme.size.xs};
     border: 1px solid ${({theme}) => theme.color.black500};
     overflow: hidden;
