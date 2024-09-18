@@ -5,13 +5,13 @@ const DDayWrapper = styled.div`
     align-items: center;
     justify-content: center;
     width: fit-content;
-    height: ${({theme}) => theme.size.base};
-    padding: ${({theme}) => theme.size.xxs} ${({theme}) => theme.size.xs};
+    padding: ${({theme}) => theme.size.sm};
     background-color: ${({theme}) => theme.color.green600+"50"};
     border-radius: ${({theme}) => theme.size.sm};
     font-size: ${({theme}) => theme.fontSize.sm};
     font-weight: 600;
-    line-height: 0px;
+    line-height: 2px;
+    margin-bottom: ${({theme}) => theme.size.xxs};
     color: ${({theme}) => theme.color.green600};
 `
 
