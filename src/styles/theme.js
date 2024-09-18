@@ -1,25 +1,25 @@
 const fontSize = {
-    xxs: "8px",
-    xs: "10px",
-    sm: "12px",
-    base: "14px",
-    md: "16px",
-    lg: "18px",
-    xl: "20px",
-    xxl: "24px",
-    xxxl: "32px"
+    xxs: "0.8rem",
+    xs: "1rem",
+    sm: "1.2rem",
+    base: "1.4rem",
+    md: "1.6rem",
+    lg: "1.8rem",
+    xl: "2rem",
+    xxl: "2.4rem",
+    xxxl: "3.2rem"
 };
 
 const size = {
-    xxs: "2px",
-    xs: "4px",
-    sm: "8px",
-    base: "16px",
-    md: "24px",
-    lg: "32px",
-    xl: "64px",
-    xxl: "128px",
-    xxxl: "256px",
+    xxs: "0.2rem",
+    xs: "0.4rem",
+    sm: "0.8rem",
+    base: "1.6rem",
+    md: "2.4rem",
+    lg: "3.2rem",
+    xl: "6.4rem",
+    xxl: "12.8rem",
+    xxxl: "25.6rem",
 };
 
 const color = {
