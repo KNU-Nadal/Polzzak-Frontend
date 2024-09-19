@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import NavBar from "./NavBar";
 
 const LayoutWrapper = styled.div`
     display: flex;
@@ -13,7 +14,7 @@ const Layout = ({children}) => {
         <LayoutWrapper>
             <div />
             {children}
-            <div />
+            <NavBar />
         </LayoutWrapper>
     )
 }

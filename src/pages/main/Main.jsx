@@ -52,7 +52,6 @@ const GuideLineCardContainer = styled.div`
 const Main = () => {
     return (
         <MainWrapper>
-            <NavBar></NavBar>
             <Title>
                 타이틀
             </Title>
