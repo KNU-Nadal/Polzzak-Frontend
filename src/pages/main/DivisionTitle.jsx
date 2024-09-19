@@ -5,6 +5,7 @@ const DivisionTitleWrapper = styled.div`
     display: flex;
     flex-direction: column;
     padding: 0 ${({theme}) => theme.size.sm};
+    margin-top: ${({theme}) => theme.size.base};
 `
 const Comment = styled.h2`
     font-size: ${({theme}) => theme.fontSize.base};

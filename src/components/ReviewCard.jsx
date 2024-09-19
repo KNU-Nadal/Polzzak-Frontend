@@ -8,14 +8,12 @@ const ReviewCardWrapper = styled.div`
     width: 100%;
     border-radius: ${({theme}) => theme.size.xs};
     border: 1px solid ${({theme}) => theme.color.black400};
-    overflow: hidden;
-
-
+    flex-shrink : 0;
     img{
         top: 0;
         width: 100%;
         height: calc(${({theme}) => theme.size.xxl} + ${({theme}) => theme.size.xl});
-   
+        object-fit : cover;
     }
 `
 const UserWrapper = styled.div`
@@ -26,7 +24,6 @@ const UserWrapper = styled.div`
     font-size: ${({theme}) => theme.fontSize.base};
     gap: ${({theme}) => theme.size.xs};
     padding-top: ${({theme}) => theme.size.xs};
-    padding-left: ${({theme}) => theme.size.xs};
     img {
         top: 0;
         border-radius: ${({theme}) => theme.size.md};
@@ -42,6 +39,8 @@ const InfoContainer = styled.div`
     padding: ${({theme}) => theme.size.xs};
     gap: ${({theme}) => theme.size.xs};
     font-size: ${({theme}) => theme.fontSize.sm};
+    padding-left: ${({theme}) => theme.size.xs};
+    object-fit: contain;
 `
 
 
