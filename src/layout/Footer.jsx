@@ -10,7 +10,6 @@ const FooterWrapper = styled.div`
     justify-content: space-between;
     flex-direction: col;
     width: 100%;
-    border: 1px solid ${({theme}) => theme.color.black500};
     padding: ${({theme}) => theme.size.xs} ${({theme}) => theme.size.base};
 
 `
