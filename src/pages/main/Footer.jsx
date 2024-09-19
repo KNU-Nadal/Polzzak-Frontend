@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import { FaSquareGithub } from "react-icons/fa6";
 import { FaTree } from "react-icons/fa";
+import theme from "../../styles/theme";
 
 const FooterDiv = styled.div`
     display: flex;
@@ -44,7 +45,7 @@ const GithubLink = styled.div`
 `
 
 const RightFooter = styled.div`
-    color: #717070;
+    color: #4e4e4e;
     display: flex;
     flex-direction: column;
     text-align: right;
@@ -62,21 +63,78 @@ const Introduction = styled.div`
     font-size: ${({theme}) => theme.size.base};
 `
 
+const FooterSectionWrapper = styled.div`
+    display: flex;
+    flex-direction: column;
+    padding: ${({theme}) => theme.size.xs};
+`
+
+const IconWrapper = styled.div`
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: ${({theme}) => theme.size.xs};
+    font-size: ${({theme}) => theme.fontSize.lg};
+    color: ${({theme}) => theme.color.black700};
+    a{
+        font-size: ${({theme}) => theme.fontSize.base};
+        color: ${({theme}) => theme.color.black500};
+        font-weight: 300;
+        text-decoration: none;
+    }
+`
+
+const DeveloperWrapper = styled.div`
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: ${({theme}) => theme.size.xs};
+    font-size: ${({theme}) => theme.fontSize.sm};
+    color: ${({theme}) => theme.color.black700};
+    img{
+        width: ${({theme}) => theme.size.base};
+        height: ${({theme}) => theme.size.base};
+    }
+    a{
+        font-size: ${({theme}) => theme.fontSize.sm};
+        color: ${({theme}) => theme.color.blue};
+    }
+`
+
 const Footer = () => {
     return(
         <FooterDiv>
-            <LeftFooter>
-                <Top>
-                    <FaTree /> <label>Team Nadal</label>
-                </Top>  
-
-                <FooterContainer>
-                    <FaSquareGithub /> 
-                        <GithubLink>        
-                            <a href = 'https://github.com/KNU-Nadal'>github </a>
-                        </GithubLink>   
-                </FooterContainer>
-            </LeftFooter>
+            <FooterSectionWrapper>
+                <IconWrapper style={{fontWeight: 600}}>
+                    <FaTree style={{fontSize: theme.size.base}} />
+                    Team Nadal
+                </IconWrapper>
+                <IconWrapper>
+                    <FaSquareGithub style={{fontSize: theme.size.base}} />
+                    <a href='https://github.com/KNU-Nadal'>Github Link</a>
+                </IconWrapper>
+                Developed By
+                <DeveloperWrapper>
+                    <img src="https://avatars.githubusercontent.com/u/174276728?s=70&v=4"/>
+                    <a href="https://github.com/heydylee">@heydylee</a>
+                    - FE
+                </DeveloperWrapper>
+                <DeveloperWrapper>
+                    <img src="https://avatars.githubusercontent.com/u/130034324?s=70&v=4"/>
+                    <a href="https://github.com/JEONW00">@JEONW00</a>
+                    - BE
+                </DeveloperWrapper>
+                <DeveloperWrapper>
+                    <img src="https://avatars.githubusercontent.com/u/71973291?s=70&v=4"/>
+                    <a href="https://github.com/MOJAN3543">@MOJAN3543</a>
+                    - FE
+                </DeveloperWrapper>
+                <DeveloperWrapper>
+                    <img src="https://avatars.githubusercontent.com/u/172799476?s=70&v=4"/>
+                    <a href="https://github.com/YoonGangHoon">@YoonGangHoon</a>
+                    - BE
+                </DeveloperWrapper>
+            </FooterSectionWrapper>
 
             <RightFooter>
                 <ProjectName>PolZzak</ProjectName>
