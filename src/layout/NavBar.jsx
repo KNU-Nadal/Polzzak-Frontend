@@ -1,8 +1,8 @@
 import styled from "styled-components"
 import theme from "../styles/theme";
-import { IoMdHome } from "react-icons/io";
-import { BiMap } from "react-icons/bi";
-import { IoPeople } from "react-icons/io5";
+import { RiHome2Line } from "react-icons/ri";
+import { GrLocation } from "react-icons/gr";
+import { FaRegUser } from "react-icons/fa6";
 import { LuSettings2 } from "react-icons/lu";
 
 const NavBarWrapper = styled.div`
@@ -38,13 +38,13 @@ const NavBarIcon = ({
 const NavBar = ( ) => {
     return(
         <NavBarWrapper>
-                <NavBarIcon IconComponent={IoMdHome}>
+                <NavBarIcon IconComponent={RiHome2Line}>
                     {"메인 메뉴"}
                 </NavBarIcon>
-                <NavBarIcon IconComponent={BiMap}>
+                <NavBarIcon IconComponent={GrLocation}>
                     {"지도 보기"}
                 </NavBarIcon>
-                <NavBarIcon IconComponent={IoPeople}>
+                <NavBarIcon IconComponent={FaRegUser}>
                     {"내 플로깅"}
                 </NavBarIcon>
                 <NavBarIcon IconComponent={LuSettings2}>
