@@ -6,7 +6,9 @@ import EventCard from "../../components/EventCard";
 import TeamCard from "../../components/TeamCard";
 import User from "../../components/User";
 import ReviewCard from "../../components/ReviewCard";
-import Footer from "../../layout/Footer";
+import NavBar from "../../layout/NavBar";
+import GuideLineCard from "../../components/GuideLineCard";
+import Footer from "../main/Footer";
 
 const MainWrapper = styled.div`
     
@@ -18,7 +20,6 @@ const EventCardContainer = styled.div`
     gap: ${({theme}) => theme.size.sm};
     padding: ${({theme}) => theme.size.sm};
 `
-    
 
 const TeamCardContainer = styled.div`
     display: flex;
@@ -34,17 +35,55 @@ const ReviewCardContainer = styled.div`
     gap: ${({theme}) => theme.size.sm};
     padding: ${({theme}) => theme.size.sm};
 `
+const GuideLineCardContainer = styled.div`
+    display: flex;
+    flex-direction: row;
+    overflow-x : auto;
+    flex-wrap: nowrap;
+    gap: ${({theme}) => theme.size.sm};
+    padding: ${({theme}) => theme.size.sm};
+    &::-webkit-scrollbar {
+          display: none;
+    }
+`
+    
 
 const Main = () => {
     return (
         <MainWrapper>
-            <Footer></Footer>
+            <NavBar></NavBar>
             <Title>
                 타이틀
             </Title>
             <TextWithIcon IconComponent={AiFillAccountBook}>
                 안녕하세요
             </TextWithIcon>
+            <GuideLineCardContainer>
+                <GuideLineCard {...
+                    {
+                        title: "플로깅 팀원 모집",
+                        content:"다른사람들과 함께 플로깅을 해보세요"
+                    }
+                }/>
+                <GuideLineCard {...
+                    {
+                        title: "플로깅 루트 리뷰",
+                        content:"사람들의 손이 거쳐진 깨끗한 길을 알아봐요"
+                    }
+                }/>
+                <GuideLineCard {...
+                    {
+                        title: "플로깅 팀원 모집",
+                        content:"다른사람들과 함께 플로깅을 해보세요"
+                    }
+                }/>
+                <GuideLineCard {...
+                    {
+                        title: "플로깅 팀원 모집",
+                        content:"다른사람들과 함께 플로깅을 해보세요"
+                    }
+                }/>
+            </GuideLineCardContainer>
             <ReviewCardContainer>
                 <ReviewCard {...
                     {
@@ -129,7 +168,7 @@ const Main = () => {
                 }/>
             </TeamCardContainer>
 
-
+                <Footer/>
         </MainWrapper>
     )
 }

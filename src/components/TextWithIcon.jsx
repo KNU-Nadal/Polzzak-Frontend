@@ -4,6 +4,7 @@ import theme from "../styles/theme";
 const TextWithIconWrapper = styled.div`
     display: flex;
     flex-direction: row;
+    align-items: center;
     gap: ${({theme}) => theme.size.xxs};
     font-size: ${({theme}) => theme.fontSize.base};
 `
