@@ -1,12 +1,12 @@
 import styled from "styled-components";
-import Title from "../components/Title";
-import TextWithIcon from "../components/TextWithIcon";
+import Title from "../../components/Title";
+import TextWithIcon from "../../components/TextWithIcon";
 import { AiFillAccountBook } from "react-icons/ai";
-import EventCard from "../components/EventCard";
-import TeamCard from "../components/TeamCard";
-import User from "../components/User";
-import ReviewCard from "../components/ReviewCard";
-import Footer from "../layout/Footer";
+import EventCard from "../../components/EventCard";
+import TeamCard from "../../components/TeamCard";
+import User from "../../components/User";
+import ReviewCard from "../../components/ReviewCard";
+import Footer from "../../layout/Footer";
 
 const MainWrapper = styled.div`
     
