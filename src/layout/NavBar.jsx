@@ -5,7 +5,7 @@ import { BiMap } from "react-icons/bi";
 import { IoPeople } from "react-icons/io5";
 import { LuSettings2 } from "react-icons/lu";
 
-const FooterWrapper = styled.div`
+const NavBarWrapper = styled.div`
     display: flex;
     justify-content: space-between;
     flex-direction: col;
@@ -14,7 +14,7 @@ const FooterWrapper = styled.div`
 
 `
 
-const FooterIconWrapper = styled.div`
+const NavBarIconWrapper = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -22,36 +22,36 @@ const FooterIconWrapper = styled.div`
     gap: ${({theme}) => theme.size.xxs};
     font-size: ${({theme}) => theme.fontSize.sm};
 `
-const FooterIcon = ({
+const NavBarIcon = ({
     color,
     IconComponent,
     children,
 }) => {
     return(
-        <FooterIconWrapper>
+        <NavBarIconWrapper>
             <IconComponent style={{fontSize: theme.size.lg, flexShrink: 0}} color={theme.color.black900}/>
             {children}
-        </FooterIconWrapper>
+        </NavBarIconWrapper>
     )
 }
 
-const Footer = ( ) => {
+const NavBar = ( ) => {
     return(
-        <FooterWrapper>
-                <FooterIcon IconComponent={IoMdHome}>
+        <NavBarWrapper>
+                <NavBarIcon IconComponent={IoMdHome}>
                     {"메인 메뉴"}
-                </FooterIcon>
-                <FooterIcon IconComponent={BiMap}>
+                </NavBarIcon>
+                <NavBarIcon IconComponent={BiMap}>
                     {"지도 보기"}
-                </FooterIcon>
-                <FooterIcon IconComponent={IoPeople}>
+                </NavBarIcon>
+                <NavBarIcon IconComponent={IoPeople}>
                     {"내 플로깅"}
-                </FooterIcon>
-                <FooterIcon IconComponent={LuSettings2}>
+                </NavBarIcon>
+                <NavBarIcon IconComponent={LuSettings2}>
                     {"환경설정"}
-                </FooterIcon>
-        </FooterWrapper>
+                </NavBarIcon>
+        </NavBarWrapper>
     )
 }
 
-export default Footer;
+export default NavBar;
