@@ -1,18 +1,18 @@
 import styled from "styled-components";
 import Title from "./Title";
 import TextWithIcon from "./TextWithIcon";
-import { FaRegCalendarAlt } from "react-icons/fa";
-import { BiMap } from "react-icons/bi";
-import { IoPeople } from "react-icons/io5";
+import { IoIosArrowForward } from "react-icons/io";
 
-const TeamCardWrapper = styled.div`
+const GuideLineCardWrapper = styled.div`
     display: flex;
     flex-direction: column;
-    width: 100%;
+    width: ${({theme}) => theme.size.xxxl};
     border-radius: ${({theme}) => theme.size.xs};
     border: 1px solid ${({theme}) => theme.color.black400};
+    box-shadow: ${({theme}) => theme.style.shadow};
+    padding: ${({theme}) => theme.size.xxs};
     overflow: hidden;
-
+    flex-shrink: 0;
     img{
         top: 0;
         width: 100%;
@@ -25,35 +25,28 @@ const InfoContainer = styled.div`
     flex-direction: column;
     padding: ${({theme}) => theme.size.xs};
     gap: ${({theme}) => theme.size.xs};
+    font-size: ${({theme}) => theme.fontSize.sm};
 `
 
 
-const TeamCard = ({
+const GuideLineCard = ({
     title,
-    startTime,
-    endTime,
-    location,
-    people
+    content,
 
 }) => {
     return(
-        <TeamCardWrapper>
+        <GuideLineCardWrapper>
             <InfoContainer>
                 <Title>
                     {title}
                 </Title>
-                <TextWithIcon IconComponent={FaRegCalendarAlt}>
-                    {startTime} - {endTime}
-                </TextWithIcon>
-                <TextWithIcon IconComponent={BiMap}>
-                    {location}
-                </TextWithIcon>
-                <TextWithIcon IconComponent={IoPeople}>
-                    {people}
+                    {content}
+                <TextWithIcon IconComponent={IoIosArrowForward}>
+                    {"더보기"}
                 </TextWithIcon>
             </InfoContainer>
-        </TeamCardWrapper>
+        </GuideLineCardWrapper>
     )
 }
 
-export default TeamCard;
+export default GuideLineCard;

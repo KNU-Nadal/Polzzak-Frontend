@@ -26,6 +26,7 @@ const color = {
     primary: "#4CF499",
     bg: "#FAFCFA",
     black300: "#F3F3F3",
+    black400: "#C4C4C4",
     black500: "#A4A4A4",
     black900: "#000000",
     green500: "#10D66B",
