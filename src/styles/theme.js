@@ -19,7 +19,7 @@ const size = {
     lg: "3.2rem",
     xl: "6.4rem",
     xxl: "12.8rem",
-    xxxl: "25.6rem",
+    xxxl: "14.4rem",
 };
 
 const color = {
