@@ -31,6 +31,7 @@ const color = {
     black500: "#A4A4A4",
     black700: "#4E4E4E",
     black900: "#000000",
+    green400: "#BDCF46",
     green500: "#10D66B",
     green600: "#0AD117",
     green700: "#22B778",

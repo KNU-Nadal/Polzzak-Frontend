@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import NavBar from "./NavBar";
+import Header from "./Header";
 
 const LayoutWrapper = styled.div`
     display: flex;
@@ -12,7 +13,7 @@ const LayoutWrapper = styled.div`
 const Layout = ({children}) => {
     return(
         <LayoutWrapper>
-            <div />
+            <Header />
             {children}
             <NavBar />
         </LayoutWrapper>

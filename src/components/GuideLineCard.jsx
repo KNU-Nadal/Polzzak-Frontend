@@ -2,6 +2,7 @@ import styled from "styled-components";
 import Title from "./Title";
 import TextWithIcon from "./TextWithIcon";
 import { IoIosArrowForward } from "react-icons/io";
+import theme from "../styles/theme";
 
 const GuideLineCardWrapper = styled.div`
     display: flex;
@@ -41,8 +42,8 @@ const GuideLineCard = ({
                     {title}
                 </Title>
                     {content}
-                <TextWithIcon IconComponent={IoIosArrowForward}>
-                    {"더보기"}
+                <TextWithIcon style={{color: theme.color.black500}} IconComponent={IoIosArrowForward}>
+                    더보기
                 </TextWithIcon>
             </InfoContainer>
         </GuideLineCardWrapper>
