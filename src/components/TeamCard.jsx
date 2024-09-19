@@ -10,9 +10,9 @@ const TeamCardWrapper = styled.div`
     flex-direction: column;
     width: 100%;
     border-radius: ${({theme}) => theme.size.xs};
-    border: 1px solid ${({theme}) => theme.color.black500};
+    border: 1px solid ${({theme}) => theme.color.black400};
     overflow: hidden;
-    box-shadow: ${({theme}) => theme.style.shadow};
+
     img{
         top: 0;
         width: 100%;
