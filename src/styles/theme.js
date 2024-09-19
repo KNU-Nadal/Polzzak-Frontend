@@ -33,6 +33,7 @@ const color = {
     black900: "#000000",
     green500: "#10D66B",
     green600: "#0AD117",
+    green700: "#22B778",
 };
 
 const style = {

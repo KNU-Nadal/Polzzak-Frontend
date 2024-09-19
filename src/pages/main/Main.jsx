@@ -9,6 +9,7 @@ import ReviewCard from "../../components/ReviewCard";
 import NavBar from "../../layout/NavBar";
 import GuideLineCard from "../../components/GuideLineCard";
 import Footer from "../main/Footer";
+import DivisionTitle from "./DivisionTitle";
 
 const MainWrapper = styled.div`
     
@@ -43,7 +44,7 @@ const GuideLineCardContainer = styled.div`
     gap: ${({theme}) => theme.size.sm};
     padding: ${({theme}) => theme.size.sm};
     &::-webkit-scrollbar {
-          display: none;
+        display: none;
     }
 `
     
@@ -58,6 +59,12 @@ const Main = () => {
             <TextWithIcon IconComponent={AiFillAccountBook}>
                 안녕하세요
             </TextWithIcon>
+            <DivisionTitle {...
+                {
+                    comment: "실시간 인기 상승",
+                    title : "회원님들의 플로깅 루트 리뷰"
+                }
+            }/>
             <GuideLineCardContainer>
                 <GuideLineCard {...
                     {
