@@ -1,6 +1,7 @@
 import styled from "styled-components"
 import { FaArrowLeft } from "react-icons/fa";
 import Frog from "../../frog.svg"
+import logo from "../assets/images/logo.svg"
 import theme from "../styles/theme";
 import { useLocation, useNavigate } from "react-router-dom";
 
@@ -21,21 +22,21 @@ const HeaderWrapper = styled.div`
 const LogoWrapper = styled.div`
     display: flex;
     align-items: center;
-    gap: ${({theme}) => theme.size.xs};
-    font-family: 'LOTTERIACHAB';
-    font-size: ${({theme}) => theme.fontSize.xl};
-    font-weight: 400;
-    color: ${({theme}) => theme.color.green400};
+    gap: ${({theme}) => theme.size.sm};
     img{
-        width: ${({theme}) => theme.size.md};
-        height: ${({theme}) => theme.size.md};
+        width: ${({theme}) => theme.size.lg};
+        height: ${({theme}) => theme.size.lg};
+    }
+    img:nth-child(2){
+        height: ${({theme}) => theme.fontSize.xxl};
+        width: inherit;
     }
 `
 const Logo = () => {
     return(
         <LogoWrapper>
             <img src={Frog} />
-            폴짝
+            <img src={logo} />
         </LogoWrapper>
     )
 }
