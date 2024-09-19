@@ -67,7 +67,7 @@ const NavBar = ( ) => {
         }
     ]
     return(
-        <NavBarWrapper>
+        <NavBarWrapper id="Nav">
             {
                 ButtonInfoList.map((ButtonInfo) => {
                     return(
