@@ -15,7 +15,6 @@ const NavBarWrapper = styled.div`
     background-color: ${({theme}) => theme.color.bg};
     width: 100%;
     padding: ${({theme}) => theme.size.sm} ${({theme}) => theme.size.md};
-
 `
 
 const NavBarIconWrapper = styled.div`
@@ -64,7 +63,7 @@ const NavBar = ( ) => {
         {
             icon: LuSettings2,
             path: "/setting",
-            string: "환경 설정"
+            string: "환경설정"
         }
     ]
     return(
