@@ -38,8 +38,7 @@ const color = {
 };
 
 const style = {
-    shadow: "0px 4px 4px 0px #00000080",
-    lightShadow: "0px 4px 4px 0px #00000015"
+    shadow: "0px 4px 4px 0px #00000015"
 }
 
 const theme = {
