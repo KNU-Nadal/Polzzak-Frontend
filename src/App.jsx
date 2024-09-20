@@ -23,7 +23,7 @@ function App() {
               <Route path="/" element={<Main />} />
               <Route path="/map" element={<Map />} />
               <Route path="/team" element={<Team />} />
-              <Route path="/review" element={<Review />} />
+              <Route path="/review/*" element={<Review />} />
               <Route path="/event" element={<Event />} />
               <Route path="/setting" element={<Setting />} />
               <Route path="*" element={<NotFound />} />
