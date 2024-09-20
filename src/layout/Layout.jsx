@@ -5,7 +5,7 @@ import Header from "./Header";
 const LayoutWrapper = styled.div`
     display: flex;
     flex-direction: column;
-    height: 100vh;
+    min-height: 100vh;
     &:nth-child(1){
         background-color: ${({theme}) => theme.color.bg};
     }
