@@ -41,7 +41,7 @@ const Detail = styled.div`
     flex-direction: row;
     gap: ${({theme}) => theme.size.xs};
     align-items: center;
-    font-size: ${({theme}) => theme.fontSize.sm};
+    font-size: ${({theme}) => theme.fontSize.xs};
     color: ${({theme}) => theme.color.black500};
 `
 
@@ -99,22 +99,18 @@ const Footer = () => {
                 <DeveloperWrapper>
                     <img src="https://avatars.githubusercontent.com/u/174276728?s=70&v=4"/>
                     <a href="https://github.com/heydylee">@heydylee</a>
-                    - FE
                 </DeveloperWrapper>
                 <DeveloperWrapper>
                     <img src="https://avatars.githubusercontent.com/u/130034324?s=70&v=4"/>
                     <a href="https://github.com/JEONW00">@JEONW00</a>
-                    - BE
                 </DeveloperWrapper>
                 <DeveloperWrapper>
                     <img src="https://avatars.githubusercontent.com/u/71973291?s=70&v=4"/>
                     <a href="https://github.com/MOJAN3543">@MOJAN3543</a>
-                    - FE
                 </DeveloperWrapper>
                 <DeveloperWrapper>
                     <img src="https://avatars.githubusercontent.com/u/172799476?s=70&v=4"/>
                     <a href="https://github.com/YoonGangHoon">@YoonGangHoon</a>
-                    - BE
                 </DeveloperWrapper>
             </FooterSectionWrapper>
             <RightFooter>
