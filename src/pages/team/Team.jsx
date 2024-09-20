@@ -1,6 +1,10 @@
 import styled from "styled-components";
 import Title from "../../components/Title";
 import TeamCard from "../../components/TeamCard";
+import DivLine from "./DivLine";
+import { IoMdInformationCircleOutline } from "react-icons/io";
+import { GrTextAlignFull } from "react-icons/gr";
+import { FiMapPin } from "react-icons/fi";
 
 const TeamCardContainer = styled.div`
     display: flex;
@@ -17,11 +21,26 @@ const TeamObj = {
     people:"2명"
 }
 
+const DivLineInfo = {
+    title : "팀 정보",
+    icon : IoMdInformationCircleOutline
+}
 
+const DivLineContent = {
+    title : "모집 내용",
+    icon : GrTextAlignFull
+}
+const DivLineLocation = {
+    title : "위치",
+    icon : FiMapPin
+}
 
 const Team = () => {
     return(
         <TeamCardContainer>
+            <DivLine {...DivLineInfo} />
+            <DivLine {...DivLineContent} />
+            <DivLine {...DivLineLocation} />
             <TeamCard {...TeamObj} />
             <TeamCard {...TeamObj} />
             <TeamCard {...TeamObj} />
