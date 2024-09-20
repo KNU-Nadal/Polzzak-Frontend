@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import { FaSquareGithub } from "react-icons/fa6";
 import { FaTree } from "react-icons/fa";
+import { IoMailSharp } from "react-icons/io5";
 import theme from "../../styles/theme";
 
 const FooterDiv = styled.div`
@@ -8,40 +9,6 @@ const FooterDiv = styled.div`
     justify-content: space-between;
     padding: ${({theme}) => theme.size.xxs};
     background-color: rgba(177, 177, 177, 0.3);
-    backdrop-filter: blur(50px);
-`
-
-const LeftFooter = styled.div`
-    display: flex;
-    text-align: left;
-    align-items: left;
-    justify-content: center;
-    flex-direction: column;
-`
-const FooterContainer = styled.div`
-    display: flex;
-    align-items: center;
-    padding: ${({theme}) => theme.size.sm}; 
-    font-size: ${({theme}) => theme.size.lg};
-    gap: ${({theme}) => theme.size.sm};
-`
-
-
-const Top = styled.div`
-    display: flex;
-    align-items: center;
-    padding-left: ${({theme}) => theme.size.sm};
-    color: #717070;
-    font-size: ${({theme}) => theme.fontSize.xxxl};
-    font-weight: 800;
-`
-const GithubLink = styled.div`
-    a {
-        color:  rgba(0, 0, 0, 0.7);
-        text-decoration: none;
-    }
-    font-size: ${({theme}) => theme.size.md};
-
 `
 
 const RightFooter = styled.div`
@@ -49,18 +16,33 @@ const RightFooter = styled.div`
     display: flex;
     flex-direction: column;
     text-align: right;
-    align-items: right;
-    justify-content: right;
-    padding-right: ${({theme}) => theme.size.sm};
+    align-items: flex-end;
+    justify-content: flex-start;
+    padding: ${({theme}) => theme.size.xs};
 `
 
 const ProjectName = styled.div`
-    font-size: ${({theme}) => theme.size.md};
+    font-size: ${({theme}) => theme.fontSize.lg};
     font-weight: 800;
 
 `
 const Introduction = styled.div`
-    font-size: ${({theme}) => theme.size.base};
+    font-size: ${({theme}) => theme.fontSize.base};
+`
+const DetailContainer = styled.div`
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    align-items: flex-end;
+    justify-content: flex-end;
+`
+const Detail = styled.div`
+    display: flex;
+    flex-direction: row;
+    gap: ${({theme}) => theme.size.xs};
+    align-items: center;
+    font-size: ${({theme}) => theme.fontSize.sm};
+    color: ${({theme}) => theme.color.black500};
 `
 
 const FooterSectionWrapper = styled.div`
@@ -135,10 +117,14 @@ const Footer = () => {
                     - BE
                 </DeveloperWrapper>
             </FooterSectionWrapper>
-
             <RightFooter>
                 <ProjectName>PolZzak</ProjectName>
                 <Introduction>환경을 보호하는 산뜻한 움직임</Introduction>
+                <DetailContainer>
+                    <Detail>2024 대구를 빛내는 해커톤 11팀</Detail>
+                    <Detail><IoMailSharp style={{fontSize: theme.fontSize.base}} />wnstjd732@knu.ac.kr</Detail>
+                    <Detail>Copyright 2024. 나무 타기의 달인 All rights reserved.</Detail>
+                </DetailContainer>
             </RightFooter>
         </FooterDiv>
     )
