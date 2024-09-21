@@ -4,7 +4,7 @@ import DivLine from "./DivLine";
 import { RiInformationLine } from "react-icons/ri";
 import { GrTextAlignFull } from "react-icons/gr";
 import { FiMapPin } from "react-icons/fi";
-import { Route, Routes } from "react-router-dom";
+import { Route, Routes,  useParams} from "react-router-dom";
 import { FaRegCalendarAlt } from "react-icons/fa";
 import { BiMap } from "react-icons/bi";
 import { IoPeople } from "react-icons/io5";
@@ -17,23 +17,23 @@ import TextWithIcon from "../../components/TextWithIcon";
 import FloatingButton from "../../components/FloatingButton";
 import { useEffect, useState } from "react";
 import axios from "axios";
+import { CiMap } from "react-icons/ci";
+import MarkerMap from "../../components/MarkerMap"
+import Frog from "../../../frog.svg"
 
-const TeamCardContainer = styled.div`
-    display: flex;
-    flex-direction: column;
-    flex-wrap: wrap;
-    gap: ${({theme}) => theme.size.sm};
-    padding: ${({theme}) => theme.size.sm};
-`
-const TeamObj = {
-    title:"대현동 초보 크루 구해요~🏃‍♂️🏃‍♂️",
-    startTime:"2024/09/20 18:00",
-    endTime:"2024/09/20 20:00",
-    location:"대구광역시 북구 대학로 80",
-    people:"2명"
+const DivLineInfo = {
+    title : "팀 정보",
+    icon : RiInformationLine
 }
 
-
+const DivLineContent = {
+    title : "모집 내용",
+    icon : CgDetailsMore
+}
+const DivLineLocation = {
+    title : "위치",
+    icon : FiMapPin
+}
 
 const TitleWrapper = styled.h2`
     font-size: ${({theme}) => theme.fontSize.lg};
@@ -62,6 +62,15 @@ const Text = ({
         </TextWrapper>
     )
 }
+
+
+const TeamCardContainer = styled.div`
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    gap: ${({theme}) => theme.size.sm};
+    padding: ${({theme}) => theme.size.sm};
+`
 
 const TeamPageContainer = styled.div`
     display: flex;
@@ -95,7 +104,6 @@ const TeamPageWrapper = styled.div`
     width: 100%;
     flex-shrink : 0;
 `
-
 
 const TeamLeaderWrapper = styled.div`
     display: flex;
@@ -138,15 +146,19 @@ const InfoTextWithIcon = ({
 }
 const TeamPage = ({
     title,
-    user_id,
-    user_src,
-    startTime,
-    endTime,
-    location,
-    people,
-    content
+    admin_id,
+    profile_image,
+    start_time,
+    end_time,
+    place_name,
+    address,
+    member,
+    content,
+    lat,
+    lng,
 
 }) => {
+ 
     return(
         <TeamPageWrapper>
             <Title>
@@ -157,8 +169,8 @@ const TeamPage = ({
                 팀장 :
                 <UserWrapper>
                     <User 
-                        user_src = {user_src}
-                        user_id = {user_id}
+                        profile_image = {profile_image ?? Frog}
+                        user_name = {admin_id}
                     />
                 </UserWrapper>
             </TextWithIcon>
@@ -167,13 +179,16 @@ const TeamPage = ({
 
             <InfoContainer>
                 <InfoTextWithIcon IconComponent={FaRegCalendarAlt}>
-                    일정 : {startTime} - {endTime}
+                    일정 : {start_time} - {end_time}
+                </InfoTextWithIcon>
+                <InfoTextWithIcon IconComponent={CiMap}>
+                    위치 : {place_name}
                 </InfoTextWithIcon>
                 <InfoTextWithIcon IconComponent={BiMap}>
-                    위치 : {location}
+                    상세 위치 : {address}
                 </InfoTextWithIcon>
                 <InfoTextWithIcon IconComponent={IoPeople}>
-                    인원 : {people}명
+                    인원 : {member}명
                 </InfoTextWithIcon>
             </InfoContainer>
 
@@ -182,36 +197,33 @@ const TeamPage = ({
                 {content}
             </Text>
             <DivLine {...DivLineLocation} />
+
         </TeamPageWrapper>
     )
 }
 
-const TeamPageObj = {
-    title : "대현동 초보 크루 구해요~🏃‍♂️🏃‍♂️",
-    user_id : "Nadal",
-    user_src : "https://upload.wikimedia.org/wikipedia/commons/thumb/b/ba/SV100408.JPG/1200px-SV100408.JPG",
-    startTime : "2024/09/20 18:00" ,
-    endTime : " 2024/09/20 20:00",
-    location : "대구광역시 북구 대학로 80 (IT융복합관 정문앞)",
-    people : "3",
-    content :"안녕하세요! 함께 대현동에서 건강도 챙기고 환경도 지키는 플로깅을 하실 분들을 모집합니다. 저희는 2024년 9월 20일(금) 오전 10시에 대현동 일대를 돌며 가벼운 러닝과 쓰레기 줍기를 할 예정이에요.✔️ 모집 대상: 플로깅 초보 환영! 러닝 속도는 천천히, 가벼운 마음으로 참여하실 분 ✔️ 일정: 2024년 9월 20일(금) 오전 10시 ✔️ 장소: IT 융복합관 정문 앞✔️ 준비물: 쓰레기 봉투와 장갑은 준비되어 있으니, 편한 복장과 운동화만 챙겨오세요! 자연도 보호하고 운동도 되는 좋은 기회, 같이 해요! 🌍"
 
-}
-
-
-
-const DivLineInfo = {
-    title : "팀 정보",
-    icon : RiInformationLine
-}
-
-const DivLineContent = {
-    title : "모집 내용",
-    icon : CgDetailsMore
-}
-const DivLineLocation = {
-    title : "위치",
-    icon : FiMapPin
+const TeamIdPage = () => {
+    const params = useParams();
+    const [team, setTeam] = useState({});
+    useEffect(() => {
+        axios({
+            method : 'GET', 
+            url: import.meta.env.VITE_POLZZAK_API_URL + "/team",
+            params: {
+                id: params.teamId
+            }
+        })
+        .then((response) => {
+            console.log(response.data);
+            setTeam(response.data);
+        })
+    },[]);
+    return(
+        <TeamPageContainer>
+            <TeamPage {...team.team} />
+        </TeamPageContainer>
+    )
 }
 
 const Team = () => {
@@ -236,24 +248,14 @@ const Team = () => {
                             )
                         })
                     }
-
-
-                <TeamCard {...TeamObj} />
-                <TeamCard {...TeamObj} />
-                <TeamCard {...TeamObj} />
-                <TeamCard {...TeamObj} />
-                <TeamCard {...TeamObj} />
-                <TeamCard {...TeamObj} />
                 <FloatingButton Icon={IoEnterOutline}>
                     팀 생성하기
                 </FloatingButton>
             </TeamCardContainer>
             }/>
 
-            <Route path="/:reviewId" element={
-            <TeamPageContainer>
-                   <TeamPage {...TeamPageObj} />
-            </TeamPageContainer>
+            <Route path="/:teamId" element={
+                <TeamIdPage />
             }/>           
         </Routes>
     )

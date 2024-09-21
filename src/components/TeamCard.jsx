@@ -31,10 +31,10 @@ const InfoContainer = styled.div`
 
 const TeamCard = ({
     title,
-    startTime,
-    endTime,
-    location,
-    people
+    start_time,
+    end_time,
+    address,
+    member
 
 }) => {
     return(
@@ -44,13 +44,13 @@ const TeamCard = ({
                     {title}
                 </Title>
                 <TextWithIcon IconComponent={FaRegCalendarAlt}>
-                    {startTime} - {endTime}
+                    {start_time} - {end_time}
                 </TextWithIcon>
                 <TextWithIcon IconComponent={BiMap}>
-                    {location}
+                    {address}
                 </TextWithIcon>
                 <TextWithIcon IconComponent={IoPeople}>
-                    {people}
+                    {member}
                 </TextWithIcon>
             </InfoContainer>
         </TeamCardWrapper>
