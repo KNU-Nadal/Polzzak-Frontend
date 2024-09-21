@@ -12,6 +12,8 @@ import Review from './pages/review/Review'
 import Team from './pages/team/Team'
 import Map from './pages/map/Map'
 import MyPlogging from './pages/myplogging/MyPlogging'
+import Login from './pages/login/Login'
+
 function App() {
 
   return (
@@ -21,6 +23,7 @@ function App() {
           <Layout>
             <Routes>
               <Route path="/" element={<Main />} />
+              <Route path="/login" element={<Login />} />
               <Route path="/map" element={<Map />} />
               <Route path="/team/*" element={<Team />} />
               <Route path="/review/*" element={<Review />} />
