@@ -16,6 +16,12 @@ jobs:
     - name: Install sshpass
       run: sudo apt-get install -y sshpass
 
+    - name: Generate .env
+      run : |
+        echo "VITE_KAKAO_MAP_API_KEY = $VITE_KAKAO_MAP_API_KEY" >> .env
+      env :
+        VITE_KAKAO_MAP_API_KEY: ${{ secrets.VITE_KAKAO_MAP_API_KEY }}
+
     - name: Copy Files to Remote Server
       run: |
         sshpass -p "${{ secrets.SSH_PASSWORD }}" scp -o StrictHostKeyChecking=no -r ./* ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}:${{ secrets.WORK_PATH }}
