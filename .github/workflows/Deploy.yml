@@ -24,11 +24,9 @@ jobs:
       run: |
         sshpass -p "${{ secrets.SSH_PASSWORD }}" ssh -o StrictHostKeyChecking=no ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} << 'EOF'
           cd ${{ secrets.WORK_PATH }}
-          echo "VITE_KAKAO_MAP_API_KEY = $VITE_KAKAO_MAP_API_KEY" >> .env
+          echo "VITE_KAKAO_MAP_API_KEY = ${{ secrets.VITE_KAKAO_MAP_API_KEY }}" >> .env
           docker build -t ${{ secrets.IMAGE }} .
           docker stop ${{ secrets.CONTAINER }} || true
           docker rm ${{ secrets.CONTAINER }} || true
           docker run -d --name ${{ secrets.CONTAINER }} -p ${{ secrets.DOCKER_EX_PORT }}:${{ secrets.DOCKER_IN_PORT }} ${{ secrets.IMAGE }}
         EOF
-      env :
-        VITE_KAKAO_MAP_API_KEY: ${{ secrets.VITE_KAKAO_MAP_API_KEY }}
