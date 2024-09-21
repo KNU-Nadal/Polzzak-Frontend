@@ -15,6 +15,7 @@ const NavBarWrapper = styled.div`
     background-color: ${({theme}) => theme.color.bg};
     width: 100%;
     padding: ${({theme}) => theme.size.sm} ${({theme}) => theme.size.md};
+    z-index: 3;
 `
 
 const NavBarIconWrapper = styled.div`
@@ -23,20 +24,20 @@ const NavBarIconWrapper = styled.div`
     align-items: center;
     gap: ${({theme}) => theme.size.xxs};
     font-size: ${({theme}) => theme.fontSize.sm};
-    font-weight: ${(props) => props.isSelected ? 700: 400};
-    color: ${(props) => props.isSelected ? ({theme}) => theme.color.primary : ({theme}) => theme.color.black900};
-    cursor: ${(props) => props.isSelected ? "default" : "pointer"};
+    font-weight: ${(props) => props.isselected ? 700: 400};
+    color: ${(props) => props.isselected == "true" ? ({theme}) => theme.color.primary : ({theme}) => theme.color.black900};
+    cursor: ${(props) => props.isselected == "true" ? "default" : "pointer"};
 `
 const NavBarIcon = ({
-    isSelected,
+    isselected,
     IconComponent,
     children,
     path,
 }) => {
     const navigate = useNavigate();
     return(
-        <NavBarIconWrapper isSelected={isSelected} onClick={() => {isSelected ? null : navigate(path)}}>
-            <IconComponent style={{fontSize: theme.size.lg, flexShrink: 0}} color={isSelected ? theme.color.primary : theme.color.black900}/>
+        <NavBarIconWrapper isselected={isselected} onClick={() => {isselected == "true" ? null : navigate(path)}}>
+            <IconComponent style={{fontSize: theme.size.lg, flexShrink: 0}} color={isselected == "true" ? theme.color.primary : theme.color.black900}/>
             {children}
         </NavBarIconWrapper>
     )
@@ -69,9 +70,9 @@ const NavBar = ( ) => {
     return(
         <NavBarWrapper id="Nav">
             {
-                ButtonInfoList.map((ButtonInfo) => {
+                ButtonInfoList.map((ButtonInfo, index) => {
                     return(
-                        <NavBarIcon isSelected={ButtonInfo.path == pathname} IconComponent={ButtonInfo.icon} path={ButtonInfo.path}>
+                        <NavBarIcon key={index} isselected={(ButtonInfo.path == pathname).toString()} IconComponent={ButtonInfo.icon} path={ButtonInfo.path}>
                             {ButtonInfo.string}
                         </NavBarIcon>
                     )
