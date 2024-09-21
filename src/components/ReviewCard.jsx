@@ -6,13 +6,15 @@ const ReviewCardWrapper = styled.div`
     display: flex;
     flex-direction: column;
     width: 100%;
-    border-radius: ${({theme}) => theme.size.xs};
+    border-radius: ${({theme}) => theme.size.sm};
     border: 1px solid ${({theme}) => theme.color.black400};
     flex-shrink : 0;
     img{
         top: 0;
         width: 100%;
-        height: calc(${({theme}) => theme.size.xxl} + ${({theme}) => theme.size.xl});
+        border-top-left-radius: ${({theme}) => theme.size.sm};
+        border-top-right-radius: ${({theme}) => theme.size.sm};
+        height: calc(${({theme}) => theme.size.xl} + ${({theme}) => theme.size.xl});
         object-fit : cover;
     }
 `
@@ -24,6 +26,7 @@ const UserWrapper = styled.div`
     font-size: ${({theme}) => theme.fontSize.base};
     gap: ${({theme}) => theme.size.xs};
     padding-top: ${({theme}) => theme.size.xs};
+    padding-left: ${({theme}) => theme.size.xs};;
     img {
         top: 0;
         border-radius: ${({theme}) => theme.size.md};
@@ -36,13 +39,19 @@ const UserWrapper = styled.div`
 const InfoContainer = styled.div`
     display: flex;
     flex-direction: column;
-    padding: ${({theme}) => theme.size.xs};
+    padding: ${({theme}) => theme.size.xs} ${({theme}) => theme.size.sm};
     gap: ${({theme}) => theme.size.xs};
     font-size: ${({theme}) => theme.fontSize.sm};
     padding-left: ${({theme}) => theme.size.xs};
     object-fit: contain;
 `
-
+const Content = styled.p`
+    font-size: ${({theme}) => theme.fontSize.xs};
+    padding-bottom:${({theme}) => theme.size.xs};
+    white-space: nowrap; /* 한 줄로 제한 */
+    overflow: hidden; /* 넘어간 부분 숨김 */
+    text-overflow: ellipsis; /* '...'으로 표시 */
+`
 
 const ReviewCard = ({
     src,
@@ -67,7 +76,9 @@ const ReviewCard = ({
                 <Title>
                     {title}
                 </Title>
+                <Content>
                 {content}
+                </Content>
             </InfoContainer>
         </ReviewCardWrapper>
     )
