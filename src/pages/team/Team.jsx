@@ -10,9 +10,11 @@ import { BiMap } from "react-icons/bi";
 import { IoPeople } from "react-icons/io5";
 import { FaCrown } from "react-icons/fa";
 import { CgDetailsMore } from "react-icons/cg";
+import { IoEnterOutline } from "react-icons/io5";
 import theme from "../../styles/theme";
 import User from "../../components/User";
 import TextWithIcon from "../../components/TextWithIcon";
+import FloatingButton from "../../components/FloatingButton";
 
 const TeamCardContainer = styled.div`
     display: flex;
@@ -221,6 +223,9 @@ const Team = () => {
                 <TeamCard {...TeamObj} />
                 <TeamCard {...TeamObj} />
                 <TeamCard {...TeamObj} />
+                <FloatingButton Icon={IoEnterOutline}>
+                    팀 생성하기
+                </FloatingButton>
             </TeamCardContainer>
             }/>
 

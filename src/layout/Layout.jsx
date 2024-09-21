@@ -12,6 +12,11 @@ const LayoutWrapper = styled.div`
     }
 `
 
+const ContentWrapper = styled.div`
+    flex-grow: 1;
+    position: relative;
+`
+
 const Layout = ({children}) => {
     const location = useLocation();
     const isLoginPage = location.pathname === '/login';
@@ -19,7 +24,9 @@ const Layout = ({children}) => {
     return(
         <LayoutWrapper>
             {!isLoginPage && <Header />}
-                {children}
+                <ContentWrapper>
+                    {children}
+                </ContentWrapper> 
             {!isLoginPage && <NavBar />}
         </LayoutWrapper>
     )
