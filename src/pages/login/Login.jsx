@@ -65,6 +65,13 @@ const ButtonWrapper = styled.div`
 
 `
 const Login = () => {
+    Kakao.init(import.meta.env.VITE_KAKAO_LOGIN_API_KEY);
+    function loginWithKakao() {
+        Kakao.Auth.authorize({
+          redirectUri: "http://polzzak-api.mojan.site/user",
+        });
+      }
+
     return(
         <LoginWrapper>
                 <FrogWrapper>
@@ -75,7 +82,7 @@ const Login = () => {
                 환경을 보호하는 산뜻한 움직임
                 </Title>
                 <ButtonContainer>
-                    <ButtonWrapper isprimary="true" onClick={() => {navigate("/")}}>
+                    <ButtonWrapper isprimary="true" onClick={() => {loginWithKakao()}}>
                         <img style={{height: theme.fontSize.xxxl, width: theme.fontSize.xxxl}} src={kakaotalk}/>
                         카카오톡으로 로그인
                     </ButtonWrapper>
