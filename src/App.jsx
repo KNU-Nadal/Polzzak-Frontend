@@ -11,7 +11,7 @@ import Event from './pages/event/Event'
 import Review from './pages/review/Review'
 import Team from './pages/team/Team'
 import Map from './pages/map/Map'
-
+import MyPlogging from './pages/myplogging/MyPlogging'
 function App() {
 
   return (
@@ -22,10 +22,11 @@ function App() {
             <Routes>
               <Route path="/" element={<Main />} />
               <Route path="/map" element={<Map />} />
-              <Route path="/team" element={<Team />} />
+              <Route path="/team/*" element={<Team />} />
               <Route path="/review/*" element={<Review />} />
-              <Route path="/event" element={<Event />} />
+              <Route path="/event/*" element={<Event />} />
               <Route path="/setting" element={<Setting />} />
+              <Route path="/myplogging" element={<MyPlogging />} />
               <Route path="*" element={<NotFound />} />
             </Routes>
           </Layout>

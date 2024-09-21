@@ -11,7 +11,7 @@ const MyTeamCardWrapper = styled.div`
     padding-left: ${({theme}) => theme.size.sm};
     border-radius: ${({theme}) => theme.size.xs};
     border: 1px solid ${({theme}) => theme.color.black400};
-    box-shadow: ${({theme}) => theme.style.lightShadow};
+    box-shadow: ${({theme}) => theme.style.shadow};
 
 `
 const User = ({

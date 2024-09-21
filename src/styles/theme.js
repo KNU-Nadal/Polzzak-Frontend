@@ -20,6 +20,7 @@ const size = {
     xl: "6.4rem",
     xxl: "12.8rem",
     xxxl: "14.4rem",
+    xxxxl: "25.6rem"
 };
 
 const color = {
@@ -30,6 +31,7 @@ const color = {
     black400: "#C4C4C4",
     black500: "#A4A4A4",
     black700: "#4E4E4E",
+    black800: "#1F1F1F",
     black900: "#000000",
     green400: "#BDCF46",
     green500: "#10D66B",
@@ -38,8 +40,7 @@ const color = {
 };
 
 const style = {
-    shadow: "0px 4px 4px 0px #00000080",
-    lightShadow: "0px 4px 4px 0px #00000015"
+    shadow: "0px 4px 4px 0px #00000015"
 }
 
 const theme = {
