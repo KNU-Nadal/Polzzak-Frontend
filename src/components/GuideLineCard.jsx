@@ -29,11 +29,14 @@ const InfoContainer = styled.div`
     font-size: ${({theme}) => theme.fontSize.sm};
 `
 
+const TextWithIconStyled = styled(TextWithIcon)`
+  cursor: pointer;
+`;
 
 const GuideLineCard = ({
     title,
     content,
-
+    ...props
 }) => {
     return(
         <GuideLineCardWrapper>
@@ -42,9 +45,9 @@ const GuideLineCard = ({
                     {title}
                 </Title>
                     {content}
-                <TextWithIcon style={{color: theme.color.black500}} IconComponent={IoIosArrowForward}>
+                <TextWithIconStyled onClick={() => {props.onClick()}} style={{color: theme.color.black500}} IconComponent={IoIosArrowForward} >
                     더보기
-                </TextWithIcon>
+                </TextWithIconStyled>
             </InfoContainer>
         </GuideLineCardWrapper>
     )

@@ -3,6 +3,9 @@ import Title from "../../components/Title";
 import Text from "../../components/Text";
 import ReviewCard from "../../components/ReviewCard";
 import { Route, Routes } from "react-router-dom";
+import { useEffect, useState } from "react";
+import axios from "axios";
+
 
 const ReviewCardContainer = styled.div`
     display: flex;
@@ -23,6 +26,7 @@ const ReviewObj = {
 const ReviewPageContainer = styled.div`
     display: flex;
     flex-direction: column;
+
     flex-wrap: wrap;
     gap: ${({theme}) => theme.size.sm};
     padding: ${({theme}) => theme.size.sm};
@@ -52,6 +56,13 @@ const ReviewPageWrapper = styled.div`
         object-fit : cover;
     }
 `
+const Content = styled.p`
+    font-size: ${({theme}) => theme.fontSize.xs};
+    white-space: nowrap; /* 한 줄로 제한 */
+    overflow: hidden; /* 넘어간 부분 숨김 */
+    text-overflow: ellipsis; /* '...'으로 표시 */
+`
+
 const ReviewPage = ({
     title,
     user_id,
@@ -71,9 +82,9 @@ const ReviewPage = ({
                 <div>{uploadTime}</div>
             </InfoContainer>
             <img src={src}/>
-            <Text>
+            <Content>
                 {content}
-            </Text>
+            </Content>
         </ReviewPageWrapper>
     )
 }
@@ -88,10 +99,27 @@ const ReviewPageObj = {
 
 
 const Review = () => {
+    const [reviewList, setReviewList] = useState([]);
+    useEffect(() => {
+        axios({
+            method : 'GET', 
+            url: import.meta.env.VITE_POLZZAK_API_URL + "/review/list"
+        })
+        .then((response) => {
+            setReviewList(response.data.reviews);
+        })
+    },[]);
     return(
         <Routes>
             <Route path="/" element={
                 <ReviewCardContainer>
+                    {
+                        reviewList.map((review, index) => {
+                            return(
+                                <ReviewCard {...review} key = {index}/>
+                            )
+                        })
+                    }
                     <ReviewCard {...ReviewObj} />
                     <ReviewCard {...ReviewObj} />
                     <ReviewCard {...ReviewObj} />
