@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { useLocation } from "react-router-dom";
 import NavBar from "./NavBar";
 import Header from "./Header";
 
@@ -12,11 +13,14 @@ const LayoutWrapper = styled.div`
 `
 
 const Layout = ({children}) => {
+    const location = useLocation();
+    const isLoginPage = location.pathname === '/login';
+
     return(
         <LayoutWrapper>
-            <Header />
-            {children}
-            <NavBar />
+            {!isLoginPage && <Header />}
+                {children}
+            {!isLoginPage && <NavBar />}
         </LayoutWrapper>
     )
 }

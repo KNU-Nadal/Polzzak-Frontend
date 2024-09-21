@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import Title from "../../components/Title";
 import TextWithIcon from "../../components/TextWithIcon";
 import { AiFillAccountBook } from "react-icons/ai";
 import EventCard from "../../components/EventCard";
@@ -12,7 +11,7 @@ import Footer from "../main/Footer";
 import DivisionTitle from "./DivisionTitle";
 import ReviewCardMain from "./ReviewCardMain";
 import MyTeamCard from "./MyTeamCard";
-
+import theme from "../../styles/theme";
 const MainWrapper = styled.div`
     
 `
@@ -70,6 +69,23 @@ const MyTeamCardContainer = styled.div`
     gap: ${({theme}) => theme.size.sm};
     padding: ${({theme}) => theme.size.sm};
 `
+
+const TitleWrapper = styled.h2`
+    font-size: ${({theme}) => theme.fontSize.lg};
+    padding: ${({theme}) => theme.size.sm};
+    padding-bottom: 0;
+`
+const Title = ({
+    children
+}) => {
+    return(
+        <TitleWrapper>
+            {children}
+        </TitleWrapper>
+    )
+}
+
+
 const Main = () => {
     return (
         <MainWrapper>

@@ -37,6 +37,8 @@ const color = {
     green500: "#10D66B",
     green600: "#0AD117",
     green700: "#22B778",
+    kakaoYellow: "#ffe812", 
+    kakaoBrown: "#381f1f",
 };
 
 const style = {
