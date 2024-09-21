@@ -19,13 +19,13 @@ const UserWrapper = styled.div`
 `
 
 const User = ({
-    user_src,
-    user_id
+    profile_image,
+    user_name
 }) => {
     return (
         <UserWrapper>
-            <img src ={user_src}/>
-            {user_id}
+            <img src ={profile_image}/>
+            {user_name}
         </UserWrapper>
     )
 

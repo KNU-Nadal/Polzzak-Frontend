@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import Title from "./Title";
 import User from "./User";
+import Frog from "../../frog.svg"
 
 const ReviewCardWrapper = styled.div`
     display: flex;
@@ -54,23 +55,21 @@ const Content = styled.p`
 `
 
 const ReviewCard = ({
-    src,
-    user_src,
-    user_id,
+    image_name,
+    profile_image,
+    user_name,
     title,
     content
 
 }) => {
     return(
         <ReviewCardWrapper>
-            <img src={src}/>
+            <img src={image_name}/>
             <UserWrapper>
-            <User {...
-            {
-                user_src:"https://cdn2.colley.kr/colley_content_paragraph_14_145_160030797214320.jpg",
-                user_id: "Heydy"
-            }
-            }/>
+            <User 
+                profile_image = {profile_image ?? Frog}
+                user_name= {user_name}
+            />
             </UserWrapper>
             <InfoContainer>
                 <Title>
