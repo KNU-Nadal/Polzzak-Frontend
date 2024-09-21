@@ -9,6 +9,8 @@ import { IoPeople } from "react-icons/io5";
 import { IoMdTime } from "react-icons/io";
 import { MdMoreHoriz } from "react-icons/md";
 import theme from "../../styles/theme";
+import { useEffect, useState } from "react";
+import axios from "axios";
 
 const EventContainer = styled.div`
     display: flex;
@@ -160,10 +162,27 @@ const EventPageObj = {
 
 
 const Event = () => {
+    const [eventList, setEventList] = useState([]);
+    useEffect(() => {
+        axios({
+            method : 'GET', 
+            url: import.meta.env.VITE_POLZZAK_API_URL + "/event/list"
+        })
+        .then((response) => {
+            setEventList(response.data.events);
+        })
+    },[]);
     return(
         <Routes>
             <Route path="/" element={
             <EventContainer>
+                    {
+                        eventList.map((event, index) => {
+                            return(
+                                <EventCard {...event} key = {index}/>
+                            )
+                        })
+                    }                
                 <EventCard {...EventObj} />
                 <EventCard {...EventObj} />
                 <EventCard {...EventObj} />

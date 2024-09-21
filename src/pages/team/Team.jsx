@@ -15,6 +15,8 @@ import theme from "../../styles/theme";
 import User from "../../components/User";
 import TextWithIcon from "../../components/TextWithIcon";
 import FloatingButton from "../../components/FloatingButton";
+import { useEffect, useState } from "react";
+import axios from "axios";
 
 const TeamCardContainer = styled.div`
     display: flex;
@@ -213,10 +215,29 @@ const DivLineLocation = {
 }
 
 const Team = () => {
+    const [TeamList, setTeamList] = useState([]);
+    useEffect(() => {
+        axios({
+            method : 'GET', 
+            url: import.meta.env.VITE_POLZZAK_API_URL + "/team/list"
+        })
+        .then((response) => {
+            setTeamList(response.data.teams);
+        })
+    },[]);
     return(
         <Routes>
             <Route path="/" element={
             <TeamCardContainer>
+                    {
+                        TeamList.map((team, index) => {
+                            return(
+                                <TeamCard {...team} key = {index}/>
+                            )
+                        })
+                    }
+
+
                 <TeamCard {...TeamObj} />
                 <TeamCard {...TeamObj} />
                 <TeamCard {...TeamObj} />
