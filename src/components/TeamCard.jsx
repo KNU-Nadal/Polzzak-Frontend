@@ -13,7 +13,7 @@ const TeamCardWrapper = styled.div`
     border: 1px solid ${({theme}) => theme.color.black400};
     overflow: hidden;
     box-shadow: ${({theme}) => theme.style.shadow};
-
+    flex-shrink: 0;
     img{
         top: 0;
         width: 100%;
