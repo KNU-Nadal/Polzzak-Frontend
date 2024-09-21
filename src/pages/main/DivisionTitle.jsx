@@ -30,6 +30,7 @@ const TextWithIconWrapper = styled.div`
     line-height: 98%;
     gap: ${({theme}) => theme.size.xxs};
     font-size: ${({theme}) => theme.fontSize.sm};
+    cursor: pointer;
 `
 const TextWithIcon = ({
     color,
@@ -48,7 +49,8 @@ const TextWithIcon = ({
 
 const DivisionTitle = ({
     comment,
-    title
+    title,
+    ...props
 }) => {
     return(
         <DivisionTitleWrapper>
@@ -61,7 +63,7 @@ const DivisionTitle = ({
                 </Title>
 
             </Text>
-            <TextWithIcon style={{color: theme.color.black500}} IconComponent={IoIosArrowForward}>
+            <TextWithIcon onClick={() => {props.onClick()}} style={{color: theme.color.black500}} IconComponent={IoIosArrowForward}>
                     더보기
             </TextWithIcon>
         </DivisionTitleWrapper>
