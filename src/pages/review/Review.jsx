@@ -5,8 +5,6 @@ import ReviewCard from "../../components/ReviewCard";
 import { Route, Routes, useNavigate, useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import axios from "axios";
-
-import { useNavigate } from 'react-router-dom';
 import { FaSave } from "react-icons/fa";
 import { MdFileUpload } from "react-icons/md";
 import theme from "../../styles/theme";
@@ -181,7 +179,6 @@ const ReviewPost = () => {
 const ReviewRoot = () => {
     const navigate = useNavigate();
     const [reviewList, setReviewList] = useState([]);
-    const navigate = useNavigate();
     useEffect(() => {
         axios({
             method : 'GET', 
