@@ -10,6 +10,7 @@ const ReviewCardWrapper = styled.div`
     border-radius: ${({theme}) => theme.size.sm};
     border: 1px solid ${({theme}) => theme.color.black400};
     flex-shrink : 0;
+    cursor: pointer;
     img{
         top: 0;
         width: 100%;
@@ -59,11 +60,11 @@ const ReviewCard = ({
     profile_image,
     user_name,
     title,
-    content
-
+    content,
+    ...props
 }) => {
     return(
-        <ReviewCardWrapper>
+        <ReviewCardWrapper {...props}>
             <img src={image_name}/>
             <UserWrapper>
             <User 

@@ -2,9 +2,16 @@ import styled from "styled-components";
 import Title from "../../components/Title";
 import Text from "../../components/Text";
 import ReviewCard from "../../components/ReviewCard";
-import { Route, Routes, useParams } from "react-router-dom";
+import { Route, Routes, useNavigate, useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import axios from "axios";
+import { FaSave } from "react-icons/fa";
+import { MdFileUpload } from "react-icons/md";
+import theme from "../../styles/theme";
+import useImageUpload from "../../hooks/useImageUpload";
+import usePlaceInput from "../../hooks/usePlaceInput";
+import FloatingButton from "../../components/FloatingButton";
+import Button from "../../components/Button";
 
 
 const ReviewCardContainer = styled.div`
@@ -44,7 +51,7 @@ const ReviewPageWrapper = styled.div`
     display: flex;
     flex-direction: column;
     width: 100%;
-
+    position: relative;
 
     flex-shrink : 0;
     img{
@@ -83,9 +90,93 @@ const ReviewPage = ({
     )
 }
 
+const StyledInput = styled.input`
+    font-family: 'Noto Sans KR';
+    padding: ${({theme}) => theme.size.base} 0;
+    height: ${({theme}) => theme.size.md};
+    width: 100%;
+    font-size: ${({theme}) => theme.size.md};
+    border: none;
+    border-bottom: 2px solid ${({theme}) => theme.color.black500};
+    font-weight: 500;
+    &:focus{
+        outline: none;
+    }
+`
+
+const StyledTextarea = styled.textarea`
+    font-family: 'Noto Sans KR';
+    resize: none;
+    font-size: ${({theme}) => theme.fontSize.base};
+    border-color: ${({theme}) => theme.color.black400};
+    height: calc(${({theme}) => theme.size.xxxxl} + ${({theme}) => theme.size.xxl});
+    &:focus{
+        outline: none;
+    }
+`
+
+const InputWrapper = styled.div`
+    display: flex;
+    flex-direction: column;
+    gap: ${({theme}) => theme.size.sm};
+    font-size: ${({theme}) => theme.fontSize.lg};
+    align-items: flex-start;
+    font-weight: 600;
+    &>img{
+        margin-bottom: 0;
+    }
+`
+
+const ReviewPost = () => {
+    const [FileInput, imageId] = useImageUpload();
+    const [MapInput, placeInfo] = usePlaceInput();
+    const buttonHandle = () => {
+        const title = document.getElementById("title").value;
+        const content = document.getElementById("content").value;
+        if(title == "" || content == "" || imageId == 0 || placeInfo.name == "" || placeInfo.address == ""){
+            console.log({title, content, imageId, placeInfo});
+            alert("제목, 본문 내용과, 이미지, 위치를 업로드 해주세요");
+            return;
+        }
+        const data = {
+            title: title,
+            content: content,
+            place: placeInfo,
+            image:{
+                id: imageId
+            }
+        }
+        axios.post(import.meta.env.VITE_POLZZAK_API_URL + "/review", data)
+        .then((response) => {
+            console.log(response);
+        })
+    }
+    return (
+        <ReviewPageWrapper style={{gap: theme.size.base}}>
+            
+            <Title>
+                <StyledInput id="title" type="text" placeholder="리뷰 제목을 입력하세요"/>
+            </Title>
+            <InputWrapper>
+                이미지 업로드
+                <FileInput />
+            </InputWrapper>
+            <StyledTextarea id="content" placeholder="본문을 입력하세요"/>
+            <InputWrapper>
+                위치
+                <MapInput />
+            </InputWrapper>
+            <Button Icon={FaSave} onClick={buttonHandle}>
+                저장
+            </Button>
+        </ReviewPageWrapper>
+    )
+}
+
 
 
 const ReviewRoot = () => {
+    const navigate = useNavigate();
     const [reviewList, setReviewList] = useState([]);
     useEffect(() => {
         axios({
@@ -98,13 +189,13 @@ const ReviewRoot = () => {
     },[]);
     return(
         <ReviewCardContainer>
-                    {
-                        reviewList.map((review, index) => {
-                            return(
-                                <ReviewCard {...review} key = {index}/>
-                            )
-                        })
-                    }
+            {
+                reviewList.map((review, index) => {
+                    return(
+                        <ReviewCard onClick={() => {navigate("/review/" + review.id)}} {...review} key = {index}/>
+                    )
+                })
+            }
         </ReviewCardContainer>
     )
 }
@@ -132,23 +223,23 @@ const ReviewIdPage = () => {
     )
 }
 
+const ReviewPostPage = () => {
+    return(
+        <ReviewPageContainer>
+            <ReviewPost />
+        </ReviewPageContainer>
+    )
+}
+
 const Review = () => {
-    const [reviewList, setReviewList] = useState([]);
-    useEffect(() => {
-        axios({
-            method : 'GET', 
-            url: import.meta.env.VITE_POLZZAK_API_URL + "/review/list"
-        })
-        .then((response) => {
-            setReviewList(response.data.reviews);
-        })
-    },[]);
     return(
         <Routes>
             <Route path="/" element={
                 <ReviewRoot />
             }/>
-
+            <Route path="/post/" element={
+                <ReviewPostPage />
+            } />
             <Route path="/:reviewId" element={
                 <ReviewIdPage />
             } />
