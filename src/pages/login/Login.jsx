@@ -3,12 +3,24 @@ import pz from "../../assets/images/pz.svg"
 import Frog from "../../../frog.svg"
 import theme from "../../styles/theme"
 import kakaotalk from "../../assets/images/KakaoTalkIcon.svg"
+
 const LoginWrapper = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     flex-grow: 1;
+    gap: ${({theme}) => theme.size.sm};
+    padding: ${({theme}) => theme.size.base};
+    font-size: ${({theme}) => theme.fontSize.lg};
+    font-weight: 500;
+`
+const FrogContainer = styled.div`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height:100vh;
     gap: ${({theme}) => theme.size.sm};
     padding: ${({theme}) => theme.size.base};
     font-size: ${({theme}) => theme.fontSize.lg};
@@ -73,7 +85,9 @@ const Login = () => {
       }
 
     return(
+        <FrogContainer>
         <LoginWrapper>
+  
                 <FrogWrapper>
                     <img src={Frog}/>
                     <img src={pz}/>                
@@ -88,6 +102,8 @@ const Login = () => {
                     </ButtonWrapper>
                 </ButtonContainer>
         </LoginWrapper>
+    </FrogContainer>
+
 
         
     )
