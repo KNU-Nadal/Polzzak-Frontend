@@ -1,6 +1,18 @@
 import styled from "styled-components";
-import Title from "../../components/Title";
 
+
+const TitleWrapper = styled.h2`
+    font-size: ${({theme}) => theme.fontSize.base};
+`
+const Title = ({
+    children
+}) => {
+    return(
+        <TitleWrapper>
+            {children}
+        </TitleWrapper>
+    )
+}
 
 const MyTeamCardWrapper = styled.div`
     display: flex;
