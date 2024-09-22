@@ -12,6 +12,7 @@ import useImageUpload from "../../hooks/useImageUpload";
 import usePlaceInput from "../../hooks/usePlaceInput";
 import FloatingButton from "../../components/FloatingButton";
 import Button from "../../components/Button";
+import MarkerMap from "../../components/MarkerMap";
 
 
 
@@ -72,8 +73,8 @@ const ReviewPage = ({
     title,
     user_name,
     image_name,
-    content
-
+    content,
+    ...props
 }) => {
     return(
         <ReviewPageWrapper>
@@ -87,6 +88,7 @@ const ReviewPage = ({
             <Text>
                 {content}
             </Text>
+            <MarkerMap {...props} />
         </ReviewPageWrapper>
     )
 }
@@ -209,6 +211,7 @@ const ReviewRoot = () => {
 }
 
 const ReviewIdPage = () => {
+    
     const params = useParams();
     const [review, setReview] = useState({});
     useEffect(() => {

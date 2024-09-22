@@ -4,7 +4,7 @@ import MapInfo from "../pages/map/MapInfo";
 import FrogPin from "../assets/images/frogPin.svg";
 
 const MapContainer = styled.div`
-    width: calc(${({theme}) => theme.size.xxxl} + ${({theme}) => theme.size.xxxl});
+    width: 100%;
     height: calc(${({theme}) => theme.size.xxxl} + ${({theme}) => theme.size.xl});
 `
 /**

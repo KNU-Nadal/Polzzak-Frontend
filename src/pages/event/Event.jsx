@@ -12,6 +12,7 @@ import theme from "../../styles/theme";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { useNavigate } from 'react-router-dom';
+import MarkerMap from "../../components/MarkerMap";
 
 const EventContainer = styled.div`
     display: flex;
@@ -106,8 +107,8 @@ const EventPage = ({
     end_time,
     address,
     member,
-    content
-
+    content,
+    ...props
 }) => {
     return(
         <EventPageWrapper>
@@ -139,6 +140,7 @@ const EventPage = ({
 
 
             <DivLine {...DivLineLocation} />
+            <MarkerMap {...props} />
         </EventPageWrapper>
     )
 }

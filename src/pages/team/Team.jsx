@@ -157,7 +157,6 @@ const TeamPage = ({
     content,
     lat,
     lng,
-
 }) => {
  
     return(
@@ -199,6 +198,7 @@ const TeamPage = ({
             </Text>
             <DivLine {...DivLineLocation} />
 
+            <MarkerMap {...{lat, lng}} />
         </TeamPageWrapper>
     )
 }
