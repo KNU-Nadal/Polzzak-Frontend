@@ -11,6 +11,7 @@ const EventCardWrapper = styled.div`
     width: calc(50% - ${({theme}) => theme.size.xs});
     border-radius: ${({theme}) => theme.size.xs};
     border: 1px solid ${({theme}) => theme.color.black500};
+    flex-shrink: 0;
     overflow: hidden;
     box-shadow: ${({theme}) => theme.style.shadow};
     flex-shrink: 0;
