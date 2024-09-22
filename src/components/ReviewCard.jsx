@@ -11,6 +11,7 @@ const ReviewCardWrapper = styled.div`
     border-radius: ${({theme}) => theme.size.sm};
     border: 1px solid ${({theme}) => theme.color.black400};
     flex-shrink : 0;
+    cursor: pointer;
     img{
         top: 0;
         width: 100%;
@@ -61,12 +62,12 @@ const ReviewCard = ({
     user_name,
     title,
     content,
-    onClick
-
+  ...props
 }) => {
     return(
-        <ReviewCardWrapper onClick={onClick}>
+        <ReviewCardWrapper {...props}>
             <img src={import.meta.env.VITE_POLZZAK_IMAGE_URL + "/images/" + image_name}  />
+
             <UserWrapper>
             <User 
                 profile_image = {profile_image ?? Frog}

@@ -1,12 +1,7 @@
 import styled from "styled-components";
 import theme from "../styles/theme";
 
-const FloatingButtonWrapper = styled.div`
-    position: fixed;
-    bottom: 8rem;
-    z-index: 2;
-    left: 50%;
-    transform: translateX(-50%);
+const ButtonWrapper = styled.div`
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -15,25 +10,27 @@ const FloatingButtonWrapper = styled.div`
     padding: ${({theme}) => theme.size.sm} ${({theme}) => theme.size.md};
     border-radius: ${({theme}) => theme.size.md};
     gap: ${({theme}) => theme.size.sm};
+    width: 100%;
     font-size: ${({theme}) => theme.fontSize.xxl};
     font-weight: 700;
     background-color: ${({theme}) => theme.color.green700};
     color: ${({theme}) => theme.color.bg};
     box-shadow: ${({theme}) => theme.style.shadow};
+    cursor: pointer;
 `
 
-const FloatingButton = ({
+const Button = ({
     Icon,
     onClick,
     children,
     ...props
 }) => {
     return(
-        <FloatingButtonWrapper {...props}>
+        <ButtonWrapper onClick={onClick} {...props}>
             <Icon style={{fontSize: theme.fontSize.xxxl}}/>
             {children}
-        </FloatingButtonWrapper>
+        </ButtonWrapper>
     )
 }
 
-export default FloatingButton;
+export default Button;

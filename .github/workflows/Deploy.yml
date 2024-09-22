@@ -27,6 +27,7 @@ jobs:
           echo "VITE_KAKAO_MAP_API_KEY = ${{ secrets.VITE_KAKAO_MAP_API_KEY }}" >> .env
           echo "VITE_KAKAO_LOGIN_API_KEY = ${{ secrets.VITE_KAKAO_LOGIN_API_KEY }}" >> .env
           echo "VITE_POLZZAK_API_URL = ${{ secrets.VITE_POLZZAK_API_URL }}" >> .env
+          echo "VITE_POLZZAK_IMAGE_URL = ${{ secrets.VITE_POLZZAK_IMAGE_URL }}" >> .env
           docker build -t ${{ secrets.IMAGE }} .
           docker stop ${{ secrets.CONTAINER }} || true
           docker rm ${{ secrets.CONTAINER }} || true
