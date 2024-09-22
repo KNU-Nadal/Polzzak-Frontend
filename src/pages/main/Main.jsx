@@ -16,7 +16,7 @@ import { useNavigate } from 'react-router-dom';
 
 
 const MainWrapper = styled.div`
-    
+    flex-grow: 1;
 `
 const EventCardContainer = styled.div`
     display: flex;
