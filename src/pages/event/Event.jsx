@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import EventCard from "../../components/EventCard";
-import { Route, Routes } from "react-router-dom";
+import { Route, Routes, useParams } from "react-router-dom";
 import DivLine from "../team/DivLine";
 import { FiMapPin } from "react-icons/fi";
 import { FaRegCalendarAlt } from "react-icons/fa";
@@ -20,13 +20,6 @@ const EventContainer = styled.div`
     padding: ${({theme}) => theme.size.sm};
 `
 
-const EventObj = {
-    src:"https://cdn.welfarehello.com/naver-blog/production/buk_daegu/2024-09/223582886882/buk_daegu_223582886882_1.png",
-    title:"금호강 바람소리길 축제",
-    startTime:"09.28",
-    endTime:"09.29",
-    location:"금호강 산격대교 하단일원(산격야영장)"
-}
 
 const TextWithIconWrapper = styled.div`
     display: flex;
@@ -106,37 +99,37 @@ const EventPageWrapper = styled.div`
     }
 `
 const EventPage = ({
-    src,
+    image_name,
     title,
-    startDate,
-    endDate,
-    startTime,
-    endTime,
-    location,
-    people,
+    start_time,
+    end_time,
+    address,
+    member,
     content
 
 }) => {
     return(
         <EventPageWrapper>
-            <img src={src}/>
-
+            <img src={import.meta.env.VITE_POLZZAK_IMAGE_URL + "/images/" + image_name}/>
             <Title>
                 {title}
             </Title>
-
             <InfoContainer>
-                <TextWithIcon IconComponent={FaRegCalendarAlt}>
-                    일자 : {startDate} ~ {endDate}
-                </TextWithIcon>
-                <TextWithIcon IconComponent={IoMdTime}>
-                    시간 : {startTime} ~ {endTime}
-                </TextWithIcon>
+
+            <TextWithIcon IconComponent={FaRegCalendarAlt}>
+                    일자 : {start_time ? start_time.split(" ")[0] : '날짜 정보 없음'} ~ {end_time ? end_time.split(" ")[0] : '날짜 정보 없음'}
+            </TextWithIcon>
+
+            <TextWithIcon IconComponent={IoMdTime}>
+                    시간 : {start_time ? start_time.split(" ")[1] : '시간 정보 없음'} ~ {end_time ? end_time.split(" ")[1] : '시간 정보 없음'}
+            </TextWithIcon>
+
                 <TextWithIcon IconComponent={BiMap}>
-                    위치 : {location}
+                    위치 : {address}
                 </TextWithIcon>
+                
                 <TextWithIcon IconComponent={IoPeople}>
-                    모집 인원 : {people}명
+                    모집 인원 : {member}명
                 </TextWithIcon>
                 <TextWithIcon IconComponent={MdMoreHoriz}>
                     기타 : {content}
@@ -148,18 +141,55 @@ const EventPage = ({
         </EventPageWrapper>
     )
 }
-const EventPageObj = {
-    src:"https://cdn.welfarehello.com/naver-blog/production/buk_daegu/2024-09/223582886882/buk_daegu_223582886882_1.png",
-    title : "금호강 바람소리길 축제",
-    startDate: "9.28(토)",
-    endDate : "9.29(일)",    
-    startTime : "09:00",
-    endTime : "22:00",
-    location : "대구광역시 북구 산격동 1477-1 (산격야영장)",
-    people : "100",
-    content : "봉사시간 26시간 인정, 폴짝이 굿즈 증정"
+
+
+
+const EventRoot = () => {
+    const [eventList, setEventList] = useState([]);
+    useEffect(() => {
+        axios({
+            method : 'GET', 
+            url: import.meta.env.VITE_POLZZAK_API_URL + "/event/list"
+        })
+        .then((response) => {
+            console.log(response.data.event);
+            setEventList(response.data.events);
+        })
+    },[]);
+    return(
+        <EventContainer >
+                    {
+                        eventList.map((event, index) => {
+                            return(
+                                <EventCard {...event} key = {index}/>
+                            )
+                        })
+                    }
+        </EventContainer>
+    )
 }
 
+const EventIdPage = () => {
+    const params = useParams();
+    const [event, setEvent] = useState([]);
+    useEffect(() => {
+        axios({
+            method : 'GET', 
+            url: import.meta.env.VITE_POLZZAK_API_URL + "/event",
+            params: {
+                id: params.eventId
+            }
+        })
+        .then((response) => {
+            setEvent(response.data.event);
+        })
+    },[]);
+    return(
+        <EventPageContainer>
+            <EventPage {...event} />
+        </EventPageContainer>
+    )
+}
 
 const Event = () => {
     const [eventList, setEventList] = useState([]);
@@ -175,26 +205,12 @@ const Event = () => {
     return(
         <Routes>
             <Route path="/" element={
-            <EventContainer>
-                    {
-                        eventList.map((event, index) => {
-                            return(
-                                <EventCard {...event} key = {index}/>
-                            )
-                        })
-                    }                
-                <EventCard {...EventObj} />
-                <EventCard {...EventObj} />
-                <EventCard {...EventObj} />
-                <EventCard {...EventObj} />
-            </EventContainer>
+                <EventRoot/>
             }/>
 
 
-            <Route path = "/:reviewId" element= {
-                <EventPageContainer>
-                <EventPage {...EventPageObj} />
-                </EventPageContainer>
+            <Route path = "/:eventId" element= {
+                <EventIdPage/>
             }/>
         </Routes>
     )

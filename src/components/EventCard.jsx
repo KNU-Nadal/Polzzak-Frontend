@@ -1,9 +1,9 @@
 import styled from "styled-components";
 import Title from "./Title";
-import TextWithIcon from "./TextWithIcon";
 import { FaRegCalendarAlt } from "react-icons/fa";
 import { BiMap } from "react-icons/bi";
 import DDay from "./DDay";
+import theme from "../styles/theme";
 
 const EventCardWrapper = styled.div`
     display: flex;
@@ -27,29 +27,51 @@ const InfoContainer = styled.div`
     padding: ${({theme}) => theme.size.xs};
     gap: ${({theme}) => theme.size.xs};
 `
+const TextWithIconWrapper = styled.div`
+    display: flex;
+    flex-direction: row;
+    line-height: 98%;
+    gap: ${({theme}) => theme.size.xxs};
+    font-size: ${({theme}) => theme.fontSize.sm};
+`
+const TextWithIcon = ({
+    color,
+    IconComponent,
+    children,
+    ...props
+}) => {
+    return(
+        <TextWithIconWrapper {...props}>
+            <IconComponent style={{fontSize: theme.size.base, flexShrink: 0}} color={theme.color.black500}/>
+            {children}
+        </TextWithIconWrapper>
+    )
+}
 
 
 const EventCard = ({
-    src,
+    image_name,
     title,
-    startTime,
-    endTime,
-    location,
+    start_time,
+    end_time,
+    address,
 }) => {
     return(
         <EventCardWrapper>
-            <img src={src}/>
+            <img src={import.meta.env.VITE_POLZZAK_IMAGE_URL + "/images/" +image_name}/>
             <InfoContainer>
                 <Title>
                     {title}
                 </Title>
                 <DDay DDay={1}/>
-                <TextWithIcon IconComponent={FaRegCalendarAlt}>
-                    {startTime} - {endTime}
-                </TextWithIcon>
-                <TextWithIcon IconComponent={BiMap}>
-                    {location}
-                </TextWithIcon>
+
+                    <TextWithIcon IconComponent={FaRegCalendarAlt}>
+                        {start_time.split(" ")[0]}~{end_time.split(" ")[0]}
+                    </TextWithIcon>
+                    <TextWithIcon IconComponent={BiMap}>
+                        {address}
+                    </TextWithIcon>
+      
             </InfoContainer>
         </EventCardWrapper>
     )
