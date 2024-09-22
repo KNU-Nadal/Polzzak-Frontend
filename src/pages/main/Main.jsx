@@ -13,7 +13,9 @@ import ReviewCardMain from "./ReviewCardMain";
 import MyTeamCard from "./MyTeamCard";
 import theme from "../../styles/theme";
 import { useNavigate } from 'react-router-dom';
-
+import { Route, Routes, useParams } from "react-router-dom";
+import { useEffect, useState } from "react";
+import axios from "axios";
 
 const MainWrapper = styled.div`
     
@@ -40,6 +42,7 @@ const ReviewCardContainer = styled.div`
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
+    
     gap: ${({theme}) => theme.size.sm};
     padding: ${({theme}) => theme.size.sm};
 `
@@ -58,12 +61,14 @@ const ReviewCardMainContainer = styled.div`
     display: flex;
     flex-direction: row;
     overflow-x : auto;
+   
     flex-wrap: nowrap;
     gap: ${({theme}) => theme.size.sm};
     padding: ${({theme}) => theme.size.sm};
     &::-webkit-scrollbar {
         display: none;
     }
+
 `
 const MyTeamCardContainer = styled.div`
     display: flex;
@@ -101,6 +106,35 @@ const MyEventCardContainer = styled.div`
     }
 `
 
+const ReviewRoot = () => {
+    const [reviewList, setReviewList] = useState([]);
+    const navigate = useNavigate();
+    useEffect(() => {
+        axios({
+            method : 'GET', 
+            url: import.meta.env.VITE_POLZZAK_API_URL + "/review/list"
+        })
+        .then((response) => {
+            setReviewList(response.data.reviews);
+        })
+    },[]);
+    return(
+        <ReviewCardMainContainer>
+                    {
+                        
+                        reviewList.map((review, index) => {
+                            return(
+                                <ReviewCardMain 
+                                {...review} 
+                                key = {index}
+                                onClick= {() => navigate('/review/' + review.id)}
+                                />
+                            )
+                        })
+                    }
+        </ReviewCardMainContainer>
+    )
+}
 
 const Main = () => {
     const navigate = useNavigate();
@@ -141,29 +175,13 @@ const Main = () => {
                     onClick: () => {navigate("/review")}
                 }
             }/>
+ 
 
             <ReviewCardMainContainer>
-                <ReviewCardMain {...
-                    {
-                        src:"https://png.pngtree.com/thumb_back/fh260/background/20210902/pngtree-blue-sky-and-white-clouds-pure-sky-image_786707.jpg",
-                        title:"드디어 찾아온 가을,  신천 플로깅 어때요?",
-                        content:"길었던 여름의 뜨거운 열기가 지나가고, 시원한 가을 바람이 불어오고 있네요. 오늘의 후기는 9월 20일에 진행했던 신천 플로깅 후기입니다! 이번 플로깅은 경북대학교..."
-                    }
-                }/>     
-                <ReviewCardMain {...
-                    {
-                        src:"https://png.pngtree.com/thumb_back/fh260/background/20210902/pngtree-blue-sky-and-white-clouds-pure-sky-image_786707.jpg",
-                        title:"드디어 찾아온 가을,  신천 플로깅 어때요?",
-                        content:"길었던 여름의 뜨거운 열기가 지나가고, 시원한 가을 바람이 불어오고 있네요. 오늘의 후기는 9월 20일에 진행했던 신천 플로깅 후기입니다! 이번 플로깅은 경북대학교..."
-                    }
-                }/>
-                <ReviewCardMain {...
-                    {
-                        src:"https://png.pngtree.com/thumb_back/fh260/background/20210902/pngtree-blue-sky-and-white-clouds-pure-sky-image_786707.jpg",
-                        title:"드디어 찾아온 가을,  신천 플로깅 어때요?",
-                        content:"길었던 여름의 뜨거운 열기가 지나가고, 시원한 가을 바람이 불어오고 있네요. 오늘의 후기는 9월 20일에 진행했던 신천 플로깅 후기입니다! 이번 플로깅은 경북대학교..."
-                    }
-                }/>
+
+                                                        <ReviewRoot />
+
+              
             </ReviewCardMainContainer>
             <DivisionTitle {...
                 {

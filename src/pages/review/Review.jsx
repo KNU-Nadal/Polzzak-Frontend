@@ -5,7 +5,7 @@ import ReviewCard from "../../components/ReviewCard";
 import { Route, Routes, useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import axios from "axios";
-
+import { useNavigate } from 'react-router-dom';
 
 const ReviewCardContainer = styled.div`
     display: flex;
@@ -75,7 +75,7 @@ const ReviewPage = ({
             <InfoContainer>
                 <div>{user_name}</div>
             </InfoContainer>
-            <img src={image_name}/>
+            <img src={import.meta.env.VITE_POLZZAK_IMAGE_URL + "/images/" + image_name}  />
             <Text>
                 {content}
             </Text>
@@ -87,6 +87,7 @@ const ReviewPage = ({
 
 const ReviewRoot = () => {
     const [reviewList, setReviewList] = useState([]);
+    const navigate = useNavigate();
     useEffect(() => {
         axios({
             method : 'GET', 
@@ -101,7 +102,10 @@ const ReviewRoot = () => {
                     {
                         reviewList.map((review, index) => {
                             return(
-                                <ReviewCard {...review} key = {index}/>
+                                <ReviewCard {...review} 
+                                key = {index}
+                                onClick= {() => navigate('/review/' + review.id)}
+                                />
                             )
                         })
                     }
@@ -134,6 +138,7 @@ const ReviewIdPage = () => {
 
 const Review = () => {
     const [reviewList, setReviewList] = useState([]);
+    const navigate = useNavigate();
     useEffect(() => {
         axios({
             method : 'GET', 

@@ -55,9 +55,10 @@ const EventCard = ({
     start_time,
     end_time,
     address,
+    onClick
 }) => {
     return(
-        <EventCardWrapper>
+        <EventCardWrapper onClick={onClick}>
             <img src={import.meta.env.VITE_POLZZAK_IMAGE_URL + "/images/" +image_name}/>
             <InfoContainer>
                 <Title>

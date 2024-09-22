@@ -34,11 +34,12 @@ const TeamCard = ({
     start_time,
     end_time,
     address,
-    member
+    member,
+    onClick
 
 }) => {
     return(
-        <TeamCardWrapper>
+        <TeamCardWrapper onClick={onClick}>
             <InfoContainer>
                 <Title>
                     {title}

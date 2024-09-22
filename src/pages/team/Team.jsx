@@ -20,6 +20,7 @@ import axios from "axios";
 import { CiMap } from "react-icons/ci";
 import MarkerMap from "../../components/MarkerMap"
 import Frog from "../../../frog.svg"
+import { useNavigate } from 'react-router-dom';
 
 const DivLineInfo = {
     title : "팀 정보",
@@ -228,6 +229,7 @@ const TeamIdPage = () => {
 
 const Team = () => {
     const [TeamList, setTeamList] = useState([]);
+    const navigate = useNavigate();
     useEffect(() => {
         axios({
             method : 'GET', 
@@ -244,7 +246,10 @@ const Team = () => {
                     {
                         TeamList.map((team, index) => {
                             return(
-                                <TeamCard {...team} key = {index}/>
+                                <TeamCard {...team} 
+                                key = {index}
+                                onClick= {() => navigate('/team/' + team.id)}
+                                />
                             )
                         })
                     }
