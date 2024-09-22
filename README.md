@@ -41,9 +41,24 @@ S타입 대구 시내의 환경 문제를 해결하고 지속가능한 발전을
 ex) 프론트엔드로는 TypeScript와 React를 사용, 백엔드로는 Java와 Spring을 사용. AWS를 통해 배포를 진행
 
 ### 📚 기술 스택
-이미지 서버 : <img src="https://img.shields.io/badge/Flask-2.5.1-blue"/>
-벡엔드 서버 : <img src="https://img.shields.io/badge/Flask-2.3.2-blue"/> <img src="https://img.shields.io/badge/flask--restx-1.3.0-blue"/><img src="https://img.shields.io/badge/Flask--Migrate-4.0.7-blue"/><img src="https://img.shields.io/badge/flask__cors-5.0.0-blue"/><img src="https://img.shields.io/badge/Flask--SQLAlchemy-3.1.1-white"/><img src="https://img.shields.io/badge/SQLAlchemy-2.0.31-white"/><img src="https://img.shields.io/badge/requests-2.32.3-yellow"/><img src="https://img.shields.io/badge/Werkzeug-3.0.1-yellow"/>
-프론트엔드 서버 : ? 
+기술스택 : 
+이미지 서버 :
+기술스택
+<img src="https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=Python&logoColor=white"/> <img src="https://img.shields.io/badge/Flask-000000?style=for-the-badge&logo=Flask&logoColor=white"/> <img src="https://img.shields.io/badge/githubactions-2088FF?style=for-the-badge&logo=githubactions&logoColor=white"/> <img src="https://img.shields.io/badge/Docker-2496ED?style=for-the-badge&logo=Docker&logoColor=white"/> <img src="https://img.shields.io/badge/styledcomponents-DB7093?style=for-the-badge&logo=nginx&logoColor=white"/>
+
+버전: <img src="https://img.shields.io/badge/Flask-2.5.1-blue"/>
+
+
+벡엔드 서버 : 
+기술스택: <img src="https://img.shields.io/badge/react-61DAFB?style=for-the-badge&logo=react&logoColor=white"/> <img src="https://img.shields.io/badge/javascript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=white"/> <img src="https://img.shields.io/badge/vite-646CFF?style=for-the-badge&logo=vite&logoColor=white"/> <img src="https://img.shields.io/badge/Docker-2496ED?style=for-the-badge&logo=Docker&logoColor=white"/> <img src="https://img.shields.io/badge/nginx-009639?style=for-the-badge&logo=nginx&logoColor=white"/> <img src="https://img.shields.io/badge/styledcomponents-DB7093?style=for-the-badge&logo=nginx&logoColor=white"/> <img src="https://img.shields.io/badge/githubactions-2088FF?style=for-the-badge&logo=githubactions&logoColor=white"/>
+버전: <img src="https://img.shields.io/badge/Flask-2.3.2-blue"/> <img src="https://img.shields.io/badge/flask--restx-1.3.0-blue"/><img src="https://img.shields.io/badge/Flask--Migrate-4.0.7-blue"/><img src="https://img.shields.io/badge/flask__cors-5.0.0-blue"/><img src="https://img.shields.io/badge/Flask--SQLAlchemy-3.1.1-white"/><img src="https://img.shields.io/badge/SQLAlchemy-2.0.31-white"/><img src="https://img.shields.io/badge/requests-2.32.3-yellow"/><img src="https://img.shields.io/badge/Werkzeug-3.0.1-yellow"/>
+
+프론트엔드 서버 : 
+기술스택: <img src="https://img.shields.io/badge/react-61DAFB?style=for-the-badge&logo=react&logoColor=white"/> <img src="https://img.shields.io/badge/javascript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=white"/> <img src="https://img.shields.io/badge/vite-646CFF?style=for-the-badge&logo=vite&logoColor=white"/> <img src="https://img.shields.io/badge/Docker-2496ED?style=for-the-badge&logo=Docker&logoColor=white"/> <img src="https://img.shields.io/badge/nginx-009639?style=for-the-badge&logo=nginx&logoColor=white"/> <img src="https://img.shields.io/badge/styledcomponents-DB7093?style=for-the-badge&logo=nginx&logoColor=white"/> <img src="https://img.shields.io/badge/githubactions-2088FF?style=for-the-badge&logo=githubactions&logoColor=white"/>
+
+버전:<img src="https://img.shields.io/badge/axios-1.7.7-orange"/><img src="https://img.shields.io/badge/react-18.3.1-blue"/><img src="https://img.shields.io/badge/react--dom-18.3.1-blue"/><img src="https://img.shields.io/badge/react--icons-5.3.0-blue"/><img src="https://img.shields.io/badge/react--router--dom-6.26.2-blue"/><img src="https://img.shields.io/badge/styled--components-6.1.13-pink"/><img src="https://img.shields.io/badge/vite-6.1.13-violet"/>
+
+
 
 ## 향후 개선 혹은 발전 방안
 1. **플로깅 마켓**: 플로깅에 필요한 도구와 용품을 판매하여 자체적인 수익 모델을 구축할 수 있습니다.
