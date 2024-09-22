@@ -37,5 +37,3 @@ const MarkerMap = ({
 }
 
 export default MarkerMap;
-
-<MarkerMap lat={lat} lng={lng} />
