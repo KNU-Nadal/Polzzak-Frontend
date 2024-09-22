@@ -5,6 +5,8 @@ import ReviewCard from "../../components/ReviewCard";
 import { Route, Routes, useNavigate, useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import axios from "axios";
+
+import { useNavigate } from 'react-router-dom';
 import { FaSave } from "react-icons/fa";
 import { MdFileUpload } from "react-icons/md";
 import theme from "../../styles/theme";
@@ -12,6 +14,7 @@ import useImageUpload from "../../hooks/useImageUpload";
 import usePlaceInput from "../../hooks/usePlaceInput";
 import FloatingButton from "../../components/FloatingButton";
 import Button from "../../components/Button";
+
 
 
 const ReviewCardContainer = styled.div`
@@ -82,7 +85,7 @@ const ReviewPage = ({
             <InfoContainer>
                 <div>{user_name}</div>
             </InfoContainer>
-            <img src={image_name}/>
+            <img src={import.meta.env.VITE_POLZZAK_IMAGE_URL + "/images/" + image_name}  />
             <Text>
                 {content}
             </Text>
@@ -178,6 +181,7 @@ const ReviewPost = () => {
 const ReviewRoot = () => {
     const navigate = useNavigate();
     const [reviewList, setReviewList] = useState([]);
+    const navigate = useNavigate();
     useEffect(() => {
         axios({
             method : 'GET', 
@@ -189,13 +193,20 @@ const ReviewRoot = () => {
     },[]);
     return(
         <ReviewCardContainer>
-            {
-                reviewList.map((review, index) => {
-                    return(
-                        <ReviewCard onClick={() => {navigate("/review/" + review.id)}} {...review} key = {index}/>
-                    )
-                })
-            }
+
+                    {
+                        reviewList.map((review, index) => {
+                            return(
+                                <ReviewCard {...review} 
+                                key = {index}
+                                onClick= {() => navigate('/review/' + review.id)}
+                                />
+                            )
+                        })
+                    }
+
+
+
         </ReviewCardContainer>
     )
 }
@@ -232,6 +243,19 @@ const ReviewPostPage = () => {
 }
 
 const Review = () => {
+
+    const [reviewList, setReviewList] = useState([]);
+    const navigate = useNavigate();
+    useEffect(() => {
+        axios({
+            method : 'GET', 
+            url: import.meta.env.VITE_POLZZAK_API_URL + "/review/list"
+        })
+        .then((response) => {
+            setReviewList(response.data.reviews);
+        })
+    },[]);
+
     return(
         <Routes>
             <Route path="/" element={

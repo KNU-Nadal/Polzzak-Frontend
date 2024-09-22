@@ -1,12 +1,11 @@
 import styled from "styled-components";
 import Title from "../../components/Title";
-
+import { useNavigate } from 'react-router-dom';
 
 const ReviewCardMainWrapper = styled.div`
     display: flex;
     flex-direction: column;
     width: ${({theme}) => theme.size.xxxl};
-    height: 30%;
     gap: ${({theme}) => theme.size.xs};
     flex-shrink: 0;
     border-radius: ${({theme}) => theme.size.xs};
@@ -14,7 +13,7 @@ const ReviewCardMainWrapper = styled.div`
     overflow: hidden;
     img{
         width: 100%;
-        height: auto;
+        height: ${({theme}) => theme.size.xxl};
         object-fit : cover;
     }
 `
@@ -46,14 +45,15 @@ const Content = styled.p`
     text-overflow: ellipsis; /* '...'으로 표시 */
 `
 const ReviewCardMain = ({
-    src,
+    image_name,
     title,
-    content
-
+    content,
+    onClick 
 }) => {
+    
     return(
-        <ReviewCardMainWrapper>
-            <img src={src}/>
+        <ReviewCardMainWrapper onClick={onClick}>
+            <img src={import.meta.env.VITE_POLZZAK_IMAGE_URL + "/images/" + image_name}  />
             <InfoContainer>
                 <StyledTitle>
                     {title}

@@ -2,6 +2,7 @@ import styled from "styled-components";
 import Title from "./Title";
 import User from "./User";
 import Frog from "../../frog.svg"
+import { useNavigate } from 'react-router-dom';
 
 const ReviewCardWrapper = styled.div`
     display: flex;
@@ -61,11 +62,12 @@ const ReviewCard = ({
     user_name,
     title,
     content,
-    ...props
+  ...props
 }) => {
     return(
         <ReviewCardWrapper {...props}>
-            <img src={image_name}/>
+            <img src={import.meta.env.VITE_POLZZAK_IMAGE_URL + "/images/" + image_name}  />
+
             <UserWrapper>
             <User 
                 profile_image = {profile_image ?? Frog}
@@ -77,7 +79,7 @@ const ReviewCard = ({
                     {title}
                 </Title>
                 <Content>
-                {content}
+                    {content}
                 </Content>
             </InfoContainer>
         </ReviewCardWrapper>

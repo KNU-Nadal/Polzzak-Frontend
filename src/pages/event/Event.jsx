@@ -11,6 +11,7 @@ import { MdMoreHoriz } from "react-icons/md";
 import theme from "../../styles/theme";
 import { useEffect, useState } from "react";
 import axios from "axios";
+import { useNavigate } from 'react-router-dom';
 
 const EventContainer = styled.div`
     display: flex;
@@ -146,13 +147,13 @@ const EventPage = ({
 
 const EventRoot = () => {
     const [eventList, setEventList] = useState([]);
+    const navigate = useNavigate();
     useEffect(() => {
         axios({
             method : 'GET', 
             url: import.meta.env.VITE_POLZZAK_API_URL + "/event/list"
         })
         .then((response) => {
-            console.log(response.data.event);
             setEventList(response.data.events);
         })
     },[]);
@@ -161,7 +162,10 @@ const EventRoot = () => {
                     {
                         eventList.map((event, index) => {
                             return(
-                                <EventCard {...event} key = {index}/>
+                                <EventCard {...event}
+                                 key = {index}
+                                 onClick= {() => navigate('/event/' + event.id)}
+                                 />
                             )
                         })
                     }
