@@ -15,6 +15,8 @@ const LayoutWrapper = styled.div`
 const ContentWrapper = styled.div`
     flex-grow: 1;
     position: relative;
+    display: flex;
+    flex-direction: column;
 `
 
 const Layout = ({children}) => {

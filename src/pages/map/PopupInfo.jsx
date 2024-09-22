@@ -4,7 +4,9 @@ import { IoCalendarClear } from "react-icons/io5";
 import { IoTime } from "react-icons/io5";
 import { FaStar } from "react-icons/fa";
 import { FaHeart } from "react-icons/fa";
+import { HiUserGroup } from "react-icons/hi2";
 import theme from "../../styles/theme";
+import { useNavigate } from "react-router-dom";
 
 
 const InfoContainer = styled.div`
@@ -106,6 +108,8 @@ const PopupInfo = ({info, PopupType}) => {
             return <ReviewPopupInfo {...info} />
         case 2:
             return <EventPopupInfo {...info} />
+        case 3:
+            return <TeamPopupInfo {...info} />
         default:
             return <></>
     }
@@ -120,10 +124,11 @@ const ReviewPopupInfo = ({
     image_name,
     ...props
 }) => {
+    const navigate = useNavigate()
     return (
         <PopupInfoContainer {...props}>
             <InfoContainer>
-                <TitleContainer>
+                <TitleContainer style={{cursor: "pointer"}} onClick={() => {navigate("/review/" + id)}}>
                     <InfoTypeWrapper color="#FB2A2A">
                         <FaHeart />
                         리뷰
@@ -141,7 +146,7 @@ const ReviewPopupInfo = ({
                 </TextWithIcon>             
             </InfoContainer>
             <ImgContainer>
-                <img src={image_name}/>
+                <img src={import.meta.env.VITE_POLZZAK_IMAGE_URL + "/images/" + image_name}/>
             </ImgContainer>
         </PopupInfoContainer>
     )
@@ -157,10 +162,11 @@ const EventPopupInfo = ({
     image_name,
     ...props
 }) => {
+    const navigate = useNavigate()
     return (
         <PopupInfoContainer {...props}>
             <InfoContainer>
-                <TitleContainer>
+                <TitleContainer style={{cursor: "pointer"}} onClick={() => {navigate("/event/" + id)}}>
                     <InfoTypeWrapper color="#FFD42B">
                         <FaStar />
                         이벤트
@@ -170,17 +176,54 @@ const EventPopupInfo = ({
                     </Title>
                 </TitleContainer>
                 <TextWithIcon IconComponent={IoCalendarClear}>
-                    {`${start_time.split('T')[0]} - ${end_time.split('T')[0]}`}
+                    {`${start_time.split(' ')[0]} - ${end_time.split(' ')[0]}`}
                 </TextWithIcon>
                 <TextWithIcon IconComponent={IoTime}>
-                    {`${start_time.split('T')[1].substring(0, 5)} - ${end_time.split('T')[1].substring(0, 5)}`}
+                    {`${start_time.split(' ')[1].substring(0, 5)} - ${end_time.split(' ')[1].substring(0, 5)}`}
                 </TextWithIcon>
                 <TextWithIcon IconComponent={FaMapMarkerAlt}>
                     {`${address} (${place_name})`}
                 </TextWithIcon>             
             </InfoContainer>
             <ImgContainer>
-                <img src={image_name}/>
+                <img src={import.meta.env.VITE_POLZZAK_IMAGE_URL + "/images/" + image_name}/>
+            </ImgContainer>
+        </PopupInfoContainer>
+    )
+}
+
+const TeamPopupInfo = ({
+    id,
+    title,
+    content,
+    address,
+    place_name,
+    image_name,
+    ...props
+}) => {
+    const navigate = useNavigate()
+    return (
+        <PopupInfoContainer {...props}>
+            <InfoContainer>
+                <TitleContainer style={{cursor: "pointer"}} onClick={() => {navigate("/team/" + id)}}>
+                    <InfoTypeWrapper color="#3B56FF">
+                        <HiUserGroup />
+                        팀 모집
+                    </InfoTypeWrapper>
+                    <Title>
+                        {title}
+                    </Title>
+                </TitleContainer>
+                
+                <Content>
+                    {content}
+                </Content>
+                <TextWithIcon IconComponent={FaMapMarkerAlt}>
+                    {`${address} (${place_name})`}
+                </TextWithIcon>             
+            </InfoContainer>
+            <ImgContainer>
+                <img src={import.meta.env.VITE_POLZZAK_IMAGE_URL + "/images/" + image_name}/>
             </ImgContainer>
         </PopupInfoContainer>
     )

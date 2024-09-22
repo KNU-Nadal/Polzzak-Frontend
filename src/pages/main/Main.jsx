@@ -18,7 +18,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 
 const MainWrapper = styled.div`
-    
+    flex-grow: 1;
 `
 const EventCardContainer = styled.div`
     display: flex;
