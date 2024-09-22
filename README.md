@@ -38,8 +38,7 @@ S타입 대구 시내의 환경 문제를 해결하고 지속가능한 발전을
 
 ### 구현 방식
 프론트 : React(JavaScript)와 Vite, Nginx와 Docker를 이용하여 배포 환경을 구성했고, 해당 배포 환경을 우분투 라즈베리파이 서버에 CD 파이프 라인을 github Action으로 구성하여 쉽고 효과적인 개발 환경을 조성했습니다. 또한 Css-In-JS인 styled-component를 이용하여 더 빠른 개발을 진행 할 수 있었습니다.
-벡 : 
-ex) 프론트엔드로는 TypeScript와 React를 사용, 백엔드로는 Java와 Spring을 사용. AWS를 통해 배포를 진행
+벡 : Flask를 이용하여 api 서버를 만들었고,flask-restx를 통해서 swagger와 연동하여 api를 자동으로 명세할 수 있도록 만들었습니다. 자동 명세 과정에서 Namespace를 활용하여 각각의 엔드 포인트마다 테스트를 해 볼 수 있게 제작하였습니다.
 
 ### 📚 기술 스택
 **이미지 서버** 
