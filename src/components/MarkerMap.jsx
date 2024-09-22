@@ -28,7 +28,7 @@ const MarkerMap = ({
         }
         const map = new kakao.maps.Map(mapComponent, options);
     
-        const mapInfo = new MapInfo(lat, lng, FrogPin, onClick);
+        const mapInfo = new MapInfo({lat:lat, lng:lng}, FrogPin, onClick);
     
         mapInfo.marker.setMap(map);
     })
@@ -37,3 +37,5 @@ const MarkerMap = ({
 }
 
 export default MarkerMap;
+
+<MarkerMap lat={lat} lng={lng} />

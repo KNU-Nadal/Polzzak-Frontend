@@ -18,6 +18,7 @@ const HeaderWrapper = styled.div`
     padding: ${({theme}) => theme.size.md} ${({theme}) => theme.size.base};
     font-size: ${({theme}) => theme.fontSize.xl};
     font-weight: 700;
+    z-index: 2;
 `
 const LogoWrapper = styled.div`
     display: flex;
