@@ -10,7 +10,9 @@ import GuideLineCard from "../../components/GuideLineCard";
 import Footer from "../main/Footer";
 import ReviewCardMain from "../main/ReviewCardMain";
 import MyTeamCard from "../main/MyTeamCard";
-
+import { Route, Routes, useParams } from "react-router-dom";
+import { useEffect, useState } from "react";
+import axios from "axios";
 
 const MainWrapper = styled.div`
     
@@ -47,18 +49,6 @@ const MyEventCardContainer = styled.div`
     }
 `
 
-const MyTeamCardContainer = styled.div`
-    display: flex;
-    flex-direction: column;
-    height: ${({theme}) => theme.size.xxxxl};
-    overflow-y : scroll;
-  
-    gap: ${({theme}) => theme.size.sm};
-    padding: ${({theme}) => theme.size.sm};
-    &::-webkit-scrollbar {
-        display: none;
-    }
-`
 
 const ReviewCardMainContainer = styled.div`
     display: flex;
@@ -71,110 +61,77 @@ const ReviewCardMainContainer = styled.div`
         display: none;
     }
 `
+const MyTeamCardContainer = styled.div`
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    gap: ${({theme}) => theme.size.sm};
+    padding: ${({theme}) => theme.size.sm};
+`
 
+const TeamCardContainer = styled.div`
+display: flex;
+flex-direction: column;
+flex-wrap: wrap;
+gap: ${({theme}) => theme.size.sm};
+padding: ${({theme}) => theme.size.sm};
+`
+const EventRoot = () => {
+    const [eventList, setEventList] = useState([]);
 
+    useEffect(() => {
+        axios({
+            method : 'GET', 
+            url: import.meta.env.VITE_POLZZAK_API_URL + "/event/list/my"
+        })
+        .then((response) => {
+            setEventList(response.data.myevents);
+        })
+    },[]);
+
+    return(
+        <MyEventCardContainer >
+                    {
+                        eventList.map((event, index) => {
+                            return(
+                                <EventCard {...myevents} key = {index}/>
+                            )
+                        })
+                    }
+        </MyEventCardContainer>
+    )
+}
 
 
 
 const MyPlogging = () => {
+  
     return (
         <MainWrapper>
-            <Title>
-                내가 참가하는 이벤트
-            </Title>
-            <MyEventCardContainer>
-                <EventCard {...
-                    {
-                        image_name:"https://cdn.welfarehello.com/naver-blog/production/buk_daegu/2024-09/223582886882/buk_daegu_223582886882_1.png",
-                        title:"금호강 바람소리길 축제",
-                        start_time:"09.28",
-                        end_time:"09.29",
-                        address:"금호강 산격대교 하단일원(산격야영장)"
-                    }
-                }/>
-                <EventCard {...
-                    {
-                        image_name:"https://cdn.welfarehello.com/naver-blog/production/buk_daegu/2024-09/223582886882/buk_daegu_223582886882_1.png",
-                        title:"금호강 바람소리길 축제",
-                        start_time:"09.28",
-                        end_time:"09.29",
-                        address:"금호강 산격대교 하단일원(산격야영장)"
-                    }
-                }/>
-                <EventCard {...
-                    {
-                        image_name:"https://cdn.welfarehello.com/naver-blog/production/buk_daegu/2024-09/223582886882/buk_daegu_223582886882_1.png",
-                        title:"금호강 바람소리길 축제",
-                        start_time:"09.28",
-                        end_time:"09.29",
-                        address:"금호강 산격대교 하단일원(산격야영장)"
-                    }
-                }/>
-                <EventCard {...
-                    {
-                        image_name:"https://cdn.welfarehello.com/naver-blog/production/buk_daegu/2024-09/223582886882/buk_daegu_223582886882_1.png",
-                        title:"금호강 바람소리길 축제",
-                        start_time:"09.28",
-                        end_time:"09.29",
-                        address:"금호강 산격대교 하단일원(산격야영장)"
-                    }
-                }/>
-
-            </MyEventCardContainer>
+ 
 
             <Title>
                 내가 참가하는 플로깅
             </Title>
             <MyTeamCardContainer>
-            <MyTeamCard {...
-                {
-                    profile_image:"https://velog.velcdn.com/images/0912078/post/11d186c1-58d3-4461-9709-4d0bb2914536/image.jpg",
-                    title: "신천 플로깅 (중,고수 환영)🙋‍♂️",
-                    start_time: "9월 18일 20시",
-                    place_name: "대현동 부근"
-                }
-            }/>
-            <MyTeamCard {...
-                {
-                    profile_image:"https://velog.velcdn.com/images/0912078/post/11d186c1-58d3-4461-9709-4d0bb2914536/image.jpg",
-                    title: "신천 플로깅 (중,고수 환영)🙋‍♂️",
-                    start_time: "9월 18일 20시",
-                    place_name: "대현동 부근"
-                }
-            }/>
-                        <MyTeamCard {...
-                {
-                    profile_image:"https://velog.velcdn.com/images/0912078/post/11d186c1-58d3-4461-9709-4d0bb2914536/image.jpg",
-                    title: "신천 플로깅 (중,고수 환영)🙋‍♂️",
-                    start_time: "9월 18일 20시",
-                    place_name: "대현동 부근"
-                }
-            }/>
-                        <MyTeamCard {...
-                {
-                    profile_image:"https://velog.velcdn.com/images/0912078/post/11d186c1-58d3-4461-9709-4d0bb2914536/image.jpg",
-                    title: "신천 플로깅 (중,고수 환영)🙋‍♂️",
-                    start_time: "9월 18일 20시",
-                    place_name: "대현동 부근"
-                }
-            }/>
-                                    <MyTeamCard {...
-                {
-                    profile_image:"https://velog.velcdn.com/images/0912078/post/11d186c1-58d3-4461-9709-4d0bb2914536/image.jpg",
-                    title: "신천 플로깅 (중,고수 환영)🙋‍♂️",
-                    start_time: "9월 18일 20시",
-                    place_name: "대현동 부근"
-                }
-            }/>
-                                    <MyTeamCard {...
-                {
-                    profile_image:"https://velog.velcdn.com/images/0912078/post/11d186c1-58d3-4461-9709-4d0bb2914536/image.jpg",
-                    title: "신천 플로깅 (중,고수 환영)🙋‍♂️",
-                    start_time: "9월 18일 20시",
-                    place_name: "대현동 부근"
-                }
-            }/>
-            </MyTeamCardContainer>
+<MyTeamCard {...
+    {
+        user_src:"https://velog.velcdn.com/images/0912078/post/11d186c1-58d3-4461-9709-4d0bb2914536/image.jpg",
+        title: "신천 플로깅 (중,고수 환영)🙋‍♂️",
+        startTime: "9월 24일 20시",
+        location: "대현동 부근"
+    }
+}/>
+<MyTeamCard {...
+    {
+        user_src:"https://www.knu.ac.kr/wbbs/img/intro/new_ch_basic.png",
+        title: "경북대학교 플로깅 크루 JU-U-RA 🙆‍♀️🙆‍♂️♻",
+        startTime: "9월 28일 19시",      
+        location: "복현동 부근"
+    }
+}/>
+</MyTeamCardContainer>
+
 
             <Title>
                 내가 올린 게시글
@@ -203,7 +160,11 @@ const MyPlogging = () => {
                     }
                 }/>
             </ReviewCardMainContainer>
+            <Title>
+                내가 참가하는 이벤트
+            </Title>
 
+            <EventRoot/>
           
         </MainWrapper>
     )
