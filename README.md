@@ -14,8 +14,7 @@ S타입 대구 시내의 환경 문제를 해결하고 지속가능한 발전을
 |이동윤<br/>[@heydylee](https://github.com/heydylee)|전창우<br/>[@JEONW00](https://github.com/JEONW00)|심준성<br/>[@MOJAN3543](https://github.com/MOJAN3543)|윤강훈<br/>[@YoonGangHoon](https://github.com/YoonGangHoon)|
 
 ## 시연 영상
-(필수) Youtube 링크
-(선택) Github Repository 페이지에서 바로 볼 수 있도록 넣어주셔도 좋습니다.
+[https://youtu.be/sTN4hlL-Ncs?si=n861ZOCfmll_foVQ](https://youtu.be/sTN4hlL-Ncs?si=n861ZOCfmll_foVQ)
 
 
 ## 💬 서비스 소개
