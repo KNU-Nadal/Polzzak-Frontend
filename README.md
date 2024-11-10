@@ -1,4 +1,5 @@
 # 🐸 폴짝: 환경을 보호하는 산뜻한 움직임
+## 🏆 2024 대구를 빛내는 해커톤 최우수상 수상
 ## 서비스 요약
 **폴짝** - 플로깅 커뮤니티 형성 및 상권(축제) 활성화 연계 환경 개선 서비스
 
@@ -6,7 +7,7 @@
 S타입 대구 시내의 환경 문제를 해결하고 지속가능한 발전을 지원하는 서비스 
 
 ## 📱 배포 링크
-[http://polzzak.mojan.site](http://polzzak.mojan.site)
+[https://polzzak.mojan.kr](https://polzzak.mojan.kr)
 
 ## 🌲 나무 타기의 달인
 |<img src="https://avatars.githubusercontent.com/u/174276728?v=4" width="150" height="150"/>|<img src="https://avatars.githubusercontent.com/u/130034324?v=4" width="150" height="150"/>|<img src="https://avatars.githubusercontent.com/u/71973291?v=4" width="150" height="150"/>|<img src="https://avatars.githubusercontent.com/u/172799476?v=4" width="150" height="150"/>|
